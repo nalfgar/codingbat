@@ -25,6 +25,13 @@ public class doubleXtest {
         assertEquals(false, DoubleX.doubleX("XxXxXXx"));
     }
 
+    @Test
+    public void testFour(){
+        assertEquals(false, DoubleX.doubleX(""));
+    }
+
+
+
 
 
 
