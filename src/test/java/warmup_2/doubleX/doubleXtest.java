@@ -4,51 +4,52 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static warmup_2.doubleX.DoubleX.doubleX;
 
 public class doubleXtest {
 
     @Test
     public void testZero(){
-        assertEquals(true, DoubleX.doubleX("axxbb"));
+        assertEquals(true, doubleX("axxbb"));
     }
 
     @Test
     public void testOne(){
-        assertEquals(true, DoubleX.doubleX("xxxxx"));
+        assertEquals(true, doubleX("xxxxx"));
     }
 
     @Test
     public void testTwo(){
-        assertEquals(true, DoubleX.doubleX("xx"));
+        assertEquals(true, doubleX("xx"));
     }
 
     @Test
     public void testThree(){
-        assertEquals(false, DoubleX.doubleX("xaxxx"));
+        assertEquals(false, doubleX("xaxxx"));
     }
 
     @Test
     public void testFour(){
-        assertEquals(false, DoubleX.doubleX("axaxax"));
+        assertEquals(false, doubleX("axaxax"));
     }
 
     @Test
     public void testFive(){
-        assertEquals(false, DoubleX.doubleX("aaaax"));
+        assertEquals(false, doubleX("aaaax"));
     }
 
     @Test
     public void testSix(){
-        assertEquals(false, DoubleX.doubleX(""));
+        assertEquals(false, doubleX(""));
     }
 
     @Test
     public void testSeven(){
-        assertEquals(false, DoubleX.doubleX("abc"));
+        assertEquals(false, doubleX("abc"));
     }
 
     @Test
     public void testEight(){
-        assertEquals(false, DoubleX.doubleX("x"));
+        assertEquals(false, doubleX("x"));
     }
 }
