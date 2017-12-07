@@ -30,5 +30,4 @@ public class StringTimesTest {
     public void testThree(){
         assertEquals("HiHiHi", StringTimes.stringTimes("Hi", 3));
     }
-
 }
