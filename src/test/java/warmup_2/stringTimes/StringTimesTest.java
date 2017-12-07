@@ -1,6 +1,7 @@
 package warmup_2.stringTimes;
 
 import org.junit.Test;
+import warmup_2.stringTimes.StringTimes;
 
 import static org.junit.Assert.assertEquals;
 
