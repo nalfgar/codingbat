@@ -19,20 +19,19 @@ public class NthSeries {
     }
 
     public static String nthSeries(int n) {
-        if (n == 0){
+        if (n == 0) {
             return "0.00";
-        } else if (n == 1){
+        } else if (n == 1) {
             return "1.00";
         } else {
             Double sum = 1.0;
             int counter = 0;
 
             for (int i = 2; i <= n; i++) {
-                sum += 1.0/((2*i) + counter);
+                sum += 1.0 / ((2 * i) + counter);
                 counter++;
             }
-            return String.format("%.2f", sum);
+            return String.format("%.2f", sum).replace(',','.');
         }
-
     }
 }
