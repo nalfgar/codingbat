@@ -22,6 +22,7 @@ public class WordsWithout {
         for (int i = 0; i < list.size(); i++) {
             arrayToReturn[i] = list.get(i);
         }
+
         return arrayToReturn;
     }
 }

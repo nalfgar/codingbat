@@ -6,7 +6,6 @@ import java.lang.reflect.Array;
 
 import static AP_1.wordsWithout.WordsWithout.wordsWithout;
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class WordsWithoutTest {
 
