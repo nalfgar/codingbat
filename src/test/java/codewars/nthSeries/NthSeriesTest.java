@@ -1,6 +1,5 @@
-package codewars;
+package codewars.nthSeries;
 
-import codewars.sumOfTheFirstNthTermOfSeries.NthSeries;
 import org.junit.Test;
 
 import static codewars.sumOfTheFirstNthTermOfSeries.NthSeries.nthSeries;
