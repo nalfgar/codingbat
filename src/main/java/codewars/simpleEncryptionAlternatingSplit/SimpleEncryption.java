@@ -2,7 +2,7 @@ package codewars.simpleEncryptionAlternatingSplit;
 
 public class SimpleEncryption {
     public static void main(String[] args) {
-        System.out.println(decrypt("hsi  etTi sats!", 1));
+        System.out.println(decrypt("hsi  etTi sats!", 2));
     }
 
     public static String encrypt(String text, int n) {
@@ -31,10 +31,39 @@ public class SimpleEncryption {
     }
 
     public static String decrypt(String text, int n) {
+        for (int i = 0; i < text.length(); i++) {
+            System.out.println("i=" + i + " " +text.charAt(i));
+        }
+        System.out.println();
+
+        System.out.println(text);
         if (n <= 0) {
             return text;
         }
         int textLenght = text.length();
-        return null;
+        StringBuilder s0;
+        StringBuilder lastChar;
+
+        if (textLenght % 2 == 0) {
+            s0 = new StringBuilder(text);
+            lastChar = new StringBuilder("");
+        } else {
+            s0 = new StringBuilder(text.substring(0, textLenght - 1));
+            lastChar = new StringBuilder(text.substring(textLenght - 2, textLenght-1));
+        }
+
+        System.out.println(s0 + "-");
+        System.out.println(lastChar + "-");
+        StringBuilder s1 = new StringBuilder("");
+        StringBuilder s2 = new StringBuilder("");
+        StringBuilder result = new StringBuilder("");
+
+//        for (int i = 0; i < textLenght; i += 2) {
+//            s1.append(s0.charAt(i));
+//            s2.append(s0.charAt(i+1));
+//        }
+
+
+        return result.toString();
     }
 }

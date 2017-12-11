@@ -59,11 +59,11 @@ public class SimpleEncryptionTest {
     public void whenMethodDecryptRecieve1(){
         assertEquals("This is a test!", decrypt("hsi  etTi sats!", 1));
     }
+
     @Test
     public void whenMethodDecryptRecieve2(){
         assertEquals("This is a test!", decrypt("s eT ashi tist!", 2));
     }
-
 
 
 
