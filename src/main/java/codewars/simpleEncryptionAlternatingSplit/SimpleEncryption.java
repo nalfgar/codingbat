@@ -2,7 +2,9 @@ package codewars.simpleEncryptionAlternatingSplit;
 
 public class SimpleEncryption {
     public static void main(String[] args) {
-        System.out.println(decrypt("hsi  etTi sats!", 1));
+
+        System.out.println(encrypt("12345", 1));
+        System.out.println(decrypt("24135", 1));
     }
 
     public static String encrypt(String text, int n) {
@@ -34,7 +36,36 @@ public class SimpleEncryption {
         if (n <= 0) {
             return text;
         }
-        int textLenght = text.length();
-        return null;
+
+        for (int i = 1; i <= n; i++) {
+            text = oneHash(text);
+        }
+
+        return text;
+    }
+
+    private static String oneHash(String str) {
+        int textLenght = str.length();
+
+        StringBuilder s = new StringBuilder(str);
+        StringBuilder s1 = new StringBuilder("");
+        StringBuilder s2 = new StringBuilder("");;
+        StringBuilder sEnd = new StringBuilder("");
+        StringBuilder result = new StringBuilder("");
+
+        if (textLenght%2==0) {
+            s1.append(s.substring(0, textLenght/2));
+            s2.append(s.substring(textLenght/2, textLenght));
+        } else {
+            s1.append(s.substring(0, (textLenght-1)/2));
+            s2.append(s.substring((textLenght-1)/2, textLenght-1));
+            sEnd.append(s.substring(textLenght-1, textLenght));
+        }
+        for (int j = 0; j < s1.length(); j++) {
+            result.append(s2.charAt(j));
+            result.append(s1.charAt(j));
+
+        }
+        return result.append(sEnd).toString();
     }
 }
