@@ -1,8 +1,7 @@
 package codewars.simpleEncryptionAlternatingSplit;
 
-import org.junit.Ignore;
+
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import static codewars.simpleEncryptionAlternatingSplit.SimpleEncryption.*;
 import static org.junit.Assert.assertEquals;
@@ -56,6 +55,12 @@ public class SimpleEncryptionTest {
     }
 
     @Test
+    public void whenMethodDecryptRecieveLessTanZero(){
+        assertEquals("This is a test!", decrypt("This is a test!", -1));
+    }
+
+
+    @Test
     public void whenMethodDecryptRecieve1(){
         assertEquals("This is a test!", decrypt("hsi  etTi sats!", 1));
     }
@@ -65,6 +70,13 @@ public class SimpleEncryptionTest {
         assertEquals("This is a test!", decrypt("s eT ashi tist!", 2));
     }
 
+    @Test
+    public void whenMethodDecryptRecieve3(){
+        assertEquals("This is a test!", decrypt(" Tah itse sits!", 3));
+    }
 
-
+    @Test
+    public void whenMethodDecryptRecieve4(){
+        assertEquals("This is a test!", decrypt("This is a test!", 4));
+    }
 }

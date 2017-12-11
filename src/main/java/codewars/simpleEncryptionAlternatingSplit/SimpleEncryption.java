@@ -2,7 +2,9 @@ package codewars.simpleEncryptionAlternatingSplit;
 
 public class SimpleEncryption {
     public static void main(String[] args) {
-        System.out.println(decrypt("hsi  etTi sats!", 2));
+
+        System.out.println(encrypt("12345", 1));
+        System.out.println(decrypt("24135", 1));
     }
 
     public static String encrypt(String text, int n) {
@@ -31,39 +33,39 @@ public class SimpleEncryption {
     }
 
     public static String decrypt(String text, int n) {
-        for (int i = 0; i < text.length(); i++) {
-            System.out.println("i=" + i + " " +text.charAt(i));
-        }
-        System.out.println();
-
-        System.out.println(text);
         if (n <= 0) {
             return text;
         }
-        int textLenght = text.length();
-        StringBuilder s0;
-        StringBuilder lastChar;
 
-        if (textLenght % 2 == 0) {
-            s0 = new StringBuilder(text);
-            lastChar = new StringBuilder("");
-        } else {
-            s0 = new StringBuilder(text.substring(0, textLenght - 1));
-            lastChar = new StringBuilder(text.substring(textLenght - 2, textLenght-1));
+        for (int i = 1; i <= n; i++) {
+            text = oneHash(text);
         }
 
-        System.out.println(s0 + "-");
-        System.out.println(lastChar + "-");
+        return text;
+    }
+
+    private static String oneHash(String str) {
+        int textLenght = str.length();
+
+        StringBuilder s = new StringBuilder(str);
         StringBuilder s1 = new StringBuilder("");
-        StringBuilder s2 = new StringBuilder("");
+        StringBuilder s2 = new StringBuilder("");;
+        StringBuilder sEnd = new StringBuilder("");
         StringBuilder result = new StringBuilder("");
 
-//        for (int i = 0; i < textLenght; i += 2) {
-//            s1.append(s0.charAt(i));
-//            s2.append(s0.charAt(i+1));
-//        }
+        if (textLenght%2==0) {
+            s1.append(s.substring(0, textLenght/2));
+            s2.append(s.substring(textLenght/2, textLenght));
+        } else {
+            s1.append(s.substring(0, (textLenght-1)/2));
+            s2.append(s.substring((textLenght-1)/2, textLenght-1));
+            sEnd.append(s.substring(textLenght-1, textLenght));
+        }
+        for (int j = 0; j < s1.length(); j++) {
+            result.append(s2.charAt(j));
+            result.append(s1.charAt(j));
 
-
-        return result.toString();
+        }
+        return result.append(sEnd).toString();
     }
 }
