@@ -14,7 +14,7 @@ public class Tribonacci {
 
     public static double[] tribonnaci(double[] s, int n){
         if (s.length <= 2){
-            throw new IllegalArgumentException("Length of array has to bigiger than 2");
+            return s;
         }
         List<Double> result = new ArrayList<Double>();
         for (double v : s) {
