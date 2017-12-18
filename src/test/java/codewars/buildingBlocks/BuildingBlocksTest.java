@@ -7,8 +7,18 @@ import static org.junit.Assert.assertEquals;
 
 public class BuildingBlocksTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructrorWithWrongTableDimension() throws IllegalArgumentException{
+        BuildingBlocks buildingBlocks = new BuildingBlocks(new int[]{});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConstructrorWithDimensionsUnder0() throws IllegalArgumentException{
+        BuildingBlocks buildingBlocks = new BuildingBlocks(new int[]{1,1,0});
+    }
+
     @Test
-    public void testConstructror() {
+    public void testConstructrorWithRightTableDimension() {
         BuildingBlocks buildingBlocks = new BuildingBlocks(new int[]{2, 2, 2});
 
         assertEquals(2, buildingBlocks.getWidth());
