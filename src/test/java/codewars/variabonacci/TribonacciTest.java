@@ -1,6 +1,5 @@
 package codewars.variabonacci;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.Test;
 
 import static codewars.variabonacci.Tribonacci.tribonnaci;
