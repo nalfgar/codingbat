@@ -18,6 +18,7 @@ public class CountYZ {
         }
 
         return (int) list.stream().
-                filter(s -> s.endsWith("y") || s.endsWith("z") || s.endsWith("Y") || s.endsWith("Z")).count();
+                filter(s -> s.endsWith("y") || s.endsWith("z") || s.endsWith("Y") || s.endsWith("Z")).
+                count();
     }
 }
