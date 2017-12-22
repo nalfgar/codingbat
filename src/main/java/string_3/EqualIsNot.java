@@ -4,17 +4,18 @@ public class EqualIsNot {
 
 
     public static boolean equalIsNot(String str) {
-        int counterIs = 0;
-        int counterNot = 0;
 
-        while (str.contains("is")) {
-            str = str.replaceFirst("is", "*");
-            counterIs++;
+        return countChanges(str, "is") == countChanges(str, "not");
+    }
+
+    private static int countChanges(String base, String replacement) {
+        int counter = 0;
+
+        while (base.contains(replacement)){
+            base = base.replaceFirst(replacement, "*");
+            counter++;
         }
-        while (str.contains("not")) {
-            str = str.replaceFirst("not", "*");
-            counterNot++;
-        }
-        return counterIs == counterNot;
+
+        return counter;
     }
 }
