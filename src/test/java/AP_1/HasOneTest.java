@@ -1,8 +1,8 @@
-package AP_1.hasOne;
+package AP_1;
 
 import org.junit.Test;
 
-import static AP_1.hasOne.HasOne.hasOne;
+import static AP_1.HasOne.hasOne;
 import static org.junit.Assert.assertEquals;
 
 public class HasOneTest {

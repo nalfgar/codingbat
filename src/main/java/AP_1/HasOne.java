@@ -1,4 +1,4 @@
-package AP_1.hasOne;
+package AP_1;
 
 public class HasOne {
     public static boolean hasOne(int i) {

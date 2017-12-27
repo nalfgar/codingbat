@@ -1,8 +1,8 @@
-package AP_1.scores100;
+package AP_1;
 
 import org.junit.Test;
 
-import static AP_1.scores100.Scores100.scores100;
+import static AP_1.Scores100.scores100;
 import static org.junit.Assert.assertEquals;
 
 public class Scores100Test {

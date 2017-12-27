@@ -1,10 +1,8 @@
-package AP_1.wordsWithout;
+package AP_1;
 
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-
-import static AP_1.wordsWithout.WordsWithout.wordsWithout;
+import static AP_1.WordsWithout.wordsWithout;
 import static org.junit.Assert.assertArrayEquals;
 
 public class WordsWithoutTest {

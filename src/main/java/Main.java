@@ -1,4 +1,4 @@
-import AP_1.hasOne.HasOne;
+import AP_1.HasOne;
 
 public class Main {
     public static void main(String[] args) {
