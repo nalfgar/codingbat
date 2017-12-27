@@ -24,7 +24,6 @@ public class NoTeenTest {
         assertEquals(expectedList, noTeen(inputList));
     }
 
-
     @Test
     public void testTwo(){
         List<Integer> inputList = new ArrayList<>();
