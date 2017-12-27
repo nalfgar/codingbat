@@ -1,4 +1,4 @@
-package AP_1.scores100;
+package AP_1;
 
 public class Scores100 {
 
