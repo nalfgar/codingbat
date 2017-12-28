@@ -7,10 +7,10 @@ public class ScoreUp {
         int score = 0;
 
         for (int i = 0; i < key.length; i++) {
-            if (answers[i].equals("?")){
-                score += 0;
-            } else if (answers[i].equals(key[i])){
+            if (answers[i].equals(key[i])){
                 score += 4;
+            } else if (answers[i].equals("?")){
+                score += 0;
             } else {
                 score += -1;
             }
