@@ -10,10 +10,8 @@ public class MapAB2 {
         if (map.containsKey("a") && map.containsKey("b") && map.get("a").equals(map.get("b"))) {
             for (Map.Entry<String, String> entry : map.entrySet()) {
                 if (entry.getKey().equals("a")) {
-                    ;
-                } else if (entry.getKey().equals("b")) {
-                    ;
-                } else {
+                } else if (entry.getKey().equals("b")) ;
+                else {
                     resultMap.put(entry.getKey(), entry.getValue());
                 }
             }
