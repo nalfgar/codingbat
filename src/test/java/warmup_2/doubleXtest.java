@@ -1,10 +1,9 @@
-package warmup_2.doubleX;
+package warmup_2;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static warmup_2.doubleX.DoubleX.doubleX;
+import static warmup_2.DoubleX.doubleX;
 
 public class doubleXtest {
 

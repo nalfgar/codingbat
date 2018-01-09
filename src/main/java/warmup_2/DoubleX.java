@@ -1,4 +1,4 @@
-package warmup_2.doubleX;
+package warmup_2;
 
 public class DoubleX {
 

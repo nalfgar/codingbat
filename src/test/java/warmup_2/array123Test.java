@@ -1,9 +1,9 @@
-package warmup_2.array123;
+package warmup_2;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static warmup_2.array123.Array123.array123;
+import static warmup_2.Array123.array123;
 
 public class array123Test {
 

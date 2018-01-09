@@ -1,4 +1,4 @@
-package warmup_2.array123;
+package warmup_2;
 
 public class Array123 {
 

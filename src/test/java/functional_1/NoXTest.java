@@ -1,7 +1,6 @@
 package functional_1;
 
 import org.junit.Test;
-import warmup_2.noTriples.NoTriples;
 
 import java.util.ArrayList;
 import java.util.List;

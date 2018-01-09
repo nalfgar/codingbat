@@ -1,5 +1,6 @@
-package warmup_2.stringSplosion;
+package warmup_2;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +9,7 @@ public class StringSplosionTest {
 
     @Test
     public void testZero(){
-        assertEquals("", StringSplosion.stringSplosion(""));
+        Assert.assertEquals("", StringSplosion.stringSplosion(""));
     }
 
     @Test

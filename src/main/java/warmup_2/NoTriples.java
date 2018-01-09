@@ -1,4 +1,4 @@
-package warmup_2.noTriples;
+package warmup_2;
 
 import java.util.HashMap;
 

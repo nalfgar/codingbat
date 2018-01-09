@@ -1,5 +1,6 @@
-package warmup_2.altPairs;
+package warmup_2;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class AltPairsTest {
     @Test
     public void testOne(){
-        assertEquals("kien", AltPairs.altPairs("kitten"));
+        Assert.assertEquals("kien", AltPairs.altPairs("kitten"));
     }
 
     @Test

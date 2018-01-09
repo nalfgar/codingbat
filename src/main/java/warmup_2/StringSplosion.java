@@ -1,6 +1,4 @@
-package warmup_2.stringSplosion;
-
-import warmup_2.stringTimes.StringTimes;
+package warmup_2;
 
 public class StringSplosion {
 

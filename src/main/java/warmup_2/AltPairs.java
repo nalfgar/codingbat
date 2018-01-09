@@ -1,4 +1,4 @@
-package warmup_2.altPairs;
+package warmup_2;
 
 public class AltPairs {
 
