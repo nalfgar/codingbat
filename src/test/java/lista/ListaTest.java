@@ -177,6 +177,17 @@ public class ListaTest {
         assertArrayEquals(new int[]{1,10,0,0,0}, lista.getList());
     }
 
-//    TODO implement zapiszDoPliku methods
-//
+    @Test
+    public void testZapiszDoPliku(){
+        Lista lista = new Lista(5);
+
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+
+        lista.zapiszDoPliku("xxxxxxx.txt");
+
+    }
+
 }

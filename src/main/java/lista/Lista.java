@@ -1,5 +1,9 @@
 package lista;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class Lista {
     private int[] list;
     private int pojemnosc;
@@ -76,6 +80,20 @@ public class Lista {
         }
     }
 
+    public void zapiszDoPliku(String string) {
+        try {
+            PrintWriter file = new PrintWriter(string);
+            for (int i : list) {
+                file.print(i);
+                file.print(" ");
+            }
+            file.print("\n");
+            file.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     protected void usunOstatni(int i) {
         int counter = 0;
         for (int j = rozmiar; j >= 0; j--) {
@@ -98,5 +116,4 @@ public class Lista {
         }
         return counter;
     }
-
 }
