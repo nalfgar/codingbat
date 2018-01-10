@@ -79,14 +79,16 @@ public class ListaTest {
         lista.dodajElement(3);
         lista.dodajElement(4);
         lista.usunPierwszy(1);
+
         assertArrayEquals(new int[]{2,3,4,0,0}, lista.getList());
 
         lista.usunPierwszy(3);
+
         assertArrayEquals(new int[]{2,4,0,0,0}, lista.getList());;
     }
 
     @Test
-    public void testUsunPowturzenia(){
+    public void testUsunPowtorzenia(){
         Lista lista = new Lista(5);
 
         lista.dodajElement(1);
@@ -94,10 +96,82 @@ public class ListaTest {
         lista.dodajElement(1);
         lista.dodajElement(2);
         lista.usunPowtorzenia();
-        lista.pisz();
+
         assertArrayEquals(new int[]{1,2,0,0,0}, lista.getList());
     }
 
-//    TODO implement usunPowtorzenia and zapiszDoPliku methods
+    @Test
+    public void testUsunPowtorzenia1(){
+        Lista lista = new Lista(5);
+
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+        lista.usunPowtorzenia();
+
+        assertArrayEquals(new int[]{1,10,0,0,0}, lista.getList());
+    }
+
+    @Test
+    public void testUsunPowtorzenia2(){
+        Lista lista = new Lista(20);
+
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(100);
+
+        lista.usunPowtorzenia();
+        lista.pisz();
+
+        assertArrayEquals(new int[]{1,10,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, lista.getList());
+    }
+
+    @Test
+    public void testIlerazyWystepuje(){
+        Lista lista = new Lista(5);
+
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+
+        assertEquals(1, lista.ileRazyWystepuje(1));
+        assertEquals(3, lista.ileRazyWystepuje(10));
+    }
+
+    @Test
+    public void testUsunOstatni(){
+        Lista lista = new Lista(5);
+
+        lista.dodajElement(1);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+        lista.dodajElement(10);
+
+        lista.usunOstatni(10);
+
+        assertArrayEquals(new int[]{1,10,10,0,0}, lista.getList());
+
+        lista.usunOstatni(10);
+        assertArrayEquals(new int[]{1,10,0,0,0}, lista.getList());
+    }
+
+//    TODO implement zapiszDoPliku methods
 //
 }

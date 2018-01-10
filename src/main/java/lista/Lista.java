@@ -51,7 +51,7 @@ public class Lista {
         System.out.println(space + "Rozmiar: " + rozmiar);
         System.out.print(space + "Elementy: ");
         for (int i : list) {
-            if (i!=0) {
+            if (i != 0) {
                 System.out.print(i + " ");
             }
         }
@@ -69,11 +69,34 @@ public class Lista {
     }
 
     public void usunPowtorzenia() {
-        for (int j = 0; j < rozmiar; j++) {
-            for (int k = j + 1; k < rozmiar; k++) {
-                list[k] = list[k + 1];
+        for (int i = 0; i < rozmiar; i++) {
+            while (ileRazyWystepuje(list[i]) > 1) {
+                usunOstatni(list[i]);
             }
-            rozmiar--;
         }
     }
+
+    protected void usunOstatni(int i) {
+        int counter = 0;
+        for (int j = rozmiar; j >= 0; j--) {
+            if (i == list[j] && counter == 0) {
+                for (int k = j; k < rozmiar; k++) {
+                    list[k] = list[k + 1];
+                }
+                rozmiar--;
+                counter++;
+            }
+        }
+    }
+
+    protected int ileRazyWystepuje(int i) {
+        int counter = 0;
+        for (int j : list) {
+            if (j == i) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
 }
