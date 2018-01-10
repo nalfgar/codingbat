@@ -1,5 +1,6 @@
 package lista;
 
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -57,17 +58,32 @@ public class ListaTest {
     }
 
 //    TODO how to test void method with sout?
+//    @Test
+//    public void testPisz(){
+//        Lista lista = new Lista(5);
+//        lista.dodajElement(1);
+//        lista.dodajElement(2);
+//        lista.dodajElement(3);
+//        lista.dodajElement(4);
+//        lista.dodajElement(500);
+//        lista.pisz();
+//    }
+
     @Test
-    public void testPisz(){
+    public void testUsunPierwszy(){
         Lista lista = new Lista(5);
+
         lista.dodajElement(1);
         lista.dodajElement(2);
         lista.dodajElement(3);
         lista.dodajElement(4);
-        lista.dodajElement(500);
-        lista.pisz();
+        lista.usunPierwszy(1);
+        assertEquals(3, lista.getRozmiar());
+
+        lista.usunPierwszy(3);
+        assertEquals(2, lista.getRozmiar());
     }
 
-//    TODO implement usunPierwszy, usunPowtorzenia and zapiszDoPliku methods
+//    TODO implement usunPowtorzenia and zapiszDoPliku methods
 //
 }

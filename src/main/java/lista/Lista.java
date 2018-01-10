@@ -24,7 +24,8 @@ public class Lista {
         if (rozmiar <= pojemnosc) {
             list[rozmiar] = i;
             rozmiar++;
-        }else {
+        } else {
+            System.out.println("Nie można dodać nowego elementu, osiągnięto max. pojemność");
             throw new ArrayIndexOutOfBoundsException();
         }
     }
@@ -32,21 +33,35 @@ public class Lista {
     public int znajdz(int i) {
 
         for (int j = 0; j < list.length; j++) {
-            if (list[j] == i){
+            if (list[j] == i) {
                 return j;
             }
         }
         return -1;
     }
 
-    public void pisz(){
+    public void pisz() {
         String space = "\t\t";
         System.out.println("Lista:");
-        System.out.println(space+ "Pojemność: " + pojemnosc);
-        System.out.println(space+ "Rozmiar: " + rozmiar);
+        System.out.println(space + "Pojemność: " + pojemnosc);
+        System.out.println(space + "Rozmiar: " + rozmiar);
         System.out.print(space + "Elementy: ");
         for (int i : list) {
             System.out.print(i + " ");
         }
     }
+
+    public void usunPierwszy(int i) {
+        int index = znajdz(i);
+
+        if (index >= 0) {
+            for (int j = index; j < rozmiar; j++) {
+                list[j] = list[j + 1];
+            }
+            rozmiar--;
+        }
+    }
+
+
+
 }
