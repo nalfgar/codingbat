@@ -1,6 +1,7 @@
 package lista;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -8,9 +9,14 @@ import static org.junit.Assert.assertEquals;
 
 public class ListaTest {
 
+    @Before
+    public void setup(){
+        Lista lista = new Lista(5);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorWithArgumentLessThanZero(){
-        Lista lista = new Lista(-5);
+        Lista lista0 = new Lista(-5);
     }
 
     @Test
@@ -137,7 +143,6 @@ public class ListaTest {
         lista.dodajElement(100);
 
         lista.usunPowtorzenia();
-        lista.pisz();
 
         assertArrayEquals(new int[]{1,10,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, lista.getList());
     }
