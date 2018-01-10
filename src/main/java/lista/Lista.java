@@ -81,13 +81,17 @@ public class Lista {
     }
 
     public void zapiszDoPliku(String string) {
+        StringBuilder bufor = new StringBuilder();
+
+        for (int i : list) {
+            bufor.append(i);
+            bufor.append(" ");
+        }
+        bufor.append("\n");
+
         try {
             PrintWriter file = new PrintWriter(string);
-            for (int i : list) {
-                file.print(i);
-                file.print(" ");
-            }
-            file.print("\n");
+            file.print(bufor);
             file.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
