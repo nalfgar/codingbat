@@ -20,6 +20,10 @@ public class Lista {
         return rozmiar;
     }
 
+    public int[] getList() {
+        return list;
+    }
+
     public void dodajElement(int i) throws ArrayIndexOutOfBoundsException {
         if (rozmiar <= pojemnosc) {
             list[rozmiar] = i;
@@ -47,7 +51,9 @@ public class Lista {
         System.out.println(space + "Rozmiar: " + rozmiar);
         System.out.print(space + "Elementy: ");
         for (int i : list) {
-            System.out.print(i + " ");
+            if (i!=0) {
+                System.out.print(i + " ");
+            }
         }
     }
 
@@ -62,6 +68,12 @@ public class Lista {
         }
     }
 
-
-
+    public void usunPowtorzenia() {
+        for (int j = 0; j < rozmiar; j++) {
+            for (int k = j + 1; k < rozmiar; k++) {
+                list[k] = list[k + 1];
+            }
+            rozmiar--;
+        }
+    }
 }

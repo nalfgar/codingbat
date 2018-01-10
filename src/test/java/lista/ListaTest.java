@@ -3,6 +3,7 @@ package lista;
 import org.junit.After;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class ListaTest {
@@ -78,10 +79,23 @@ public class ListaTest {
         lista.dodajElement(3);
         lista.dodajElement(4);
         lista.usunPierwszy(1);
-        assertEquals(3, lista.getRozmiar());
+        assertArrayEquals(new int[]{2,3,4,0,0}, lista.getList());
 
         lista.usunPierwszy(3);
-        assertEquals(2, lista.getRozmiar());
+        assertArrayEquals(new int[]{2,4,0,0,0}, lista.getList());;
+    }
+
+    @Test
+    public void testUsunPowturzenia(){
+        Lista lista = new Lista(5);
+
+        lista.dodajElement(1);
+        lista.dodajElement(2);
+        lista.dodajElement(1);
+        lista.dodajElement(2);
+        lista.usunPowtorzenia();
+        lista.pisz();
+        assertArrayEquals(new int[]{1,2,0,0,0}, lista.getList());
     }
 
 //    TODO implement usunPowtorzenia and zapiszDoPliku methods
