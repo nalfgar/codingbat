@@ -16,9 +16,9 @@ public class Workforce {
         engagement = 0;
     }
 
-    public void addWorker(Worker worker) {
+    public void addWorker(Worker worker){
         if (engagement > workers.length) {
-            throw new ArrayIndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException("Firm is full, has " + engagement + " workers.");
         }
         workers[engagement] = worker;
         engagement++;
