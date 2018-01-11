@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 public class WorkforceTest {
 
+//    Worker tests
     @Test
     public void testDoesHeWorkInDepartment1(){
         Worker worker = new Worker("Darek", "Strojecki", 2500.0, 'M', 100);
@@ -23,6 +24,7 @@ public class WorkforceTest {
         Worker worker = new Worker("Darek", "Strojecki", 2500.0, 'X', 10);
     }
 
+//    Workforce tests
     @Test(expected = IllegalArgumentException.class)
     public void testWorkforceConstructorWhenMaxWorkersIsMoreTandOneHoundred(){
         Workforce workforce = new Workforce(111);
@@ -35,5 +37,12 @@ public class WorkforceTest {
         assertEquals(10, workforce.getWorkers().length);
     }
 
-
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void testAddWorkerWhenWorkforceHasFull(){
+        Workforce workforce = new Workforce(1);
+        Worker worker1 = new Worker("Darek", "Strojecki", 2500.0, 'M', 10);
+        Worker worker2 = new Worker("Marek", "Strojecki", 2000.0, 'M', 10);
+        workforce.addWorker(worker1);
+        workforce.addWorker(worker2);
+    }
 }
