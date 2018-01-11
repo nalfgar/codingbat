@@ -2,9 +2,7 @@ package workforce;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class WorkforceTest {
 
@@ -19,4 +17,18 @@ public class WorkforceTest {
         Worker worker = new Worker("Darek", "Strojecki", 2500.0, 'M', 10);
         assertTrue(worker.doesHeWorkInDepartment(10));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testWorkforceConstructorWhenMaxWorkersIsMoreTandOneHoundred(){
+        Workforce workforce = new Workforce(111);
+    }
+
+    @Test
+    public void testWorkforceConstructorWhenMaxWorkersIsLessTandOneHoundred(){
+        Workforce workforce = new Workforce(10);
+        assertEquals(10, workforce.getEngagement());
+        assertEquals(10, workforce.getWorkers().length);
+    }
+
+
 }
