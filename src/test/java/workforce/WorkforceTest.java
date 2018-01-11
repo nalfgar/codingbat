@@ -46,6 +46,22 @@ public class WorkforceTest {
         workforce.addWorker(worker2);
     }
 
+//    TODO objects are the same in my opinion
+//    @Test
+//    public void testImportFromFile(){
+//        Workforce expectedWorkforce = new Workforce(5);
+//        Worker worker1 = new Worker("Jan", "Kowalski", 2000.00, 'M', 30);
+//        Worker worker2 = new Worker("Jan", "Kaczmarski", 2500.0, 'M', 10);
+//        Worker worker3 = new Worker("Janina", "Bielska", 2500.0, 'F', 10);
+//        expectedWorkforce.addWorker(worker1);
+//        expectedWorkforce.addWorker(worker2);
+//        expectedWorkforce.addWorker(worker3);
+//
+//        Workforce workforce = new Workforce(5);
+//        workforce.importFromTextFile("firma.txt");
+//        assertEquals(expectedWorkforce, workforce);
+//    }
+
 //    TODO how to test when scanner.nextLine is in tested method?
 //    @Test
 //    public void testAddWorkerInteractive(){

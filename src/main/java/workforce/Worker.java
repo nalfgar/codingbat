@@ -50,6 +50,23 @@ public class Worker {
         return new Worker(name, surname, salary, gender, department);
     }
 
+    public static Worker workerFromString(String line) {
+        String name;
+        String surname;
+        double salary;
+        char gender;
+        int department;
+
+        String[] data = line.split("\\s+");
+        name = data[0];
+        surname = data[1];
+        salary = Double.valueOf(data[2]);
+        gender = data[3].charAt(0);
+        department = Integer.valueOf(data[4]);
+
+        return new Worker(name, surname, salary, gender, department);
+    }
+
     public String getName() {
         return name;
     }
@@ -100,4 +117,5 @@ public class Worker {
                 ", department=" + department +
                 '}';
     }
+
 }

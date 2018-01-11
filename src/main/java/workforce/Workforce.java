@@ -1,6 +1,9 @@
 package workforce;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Workforce {
     private final int MAX_WORKERS = 100;
@@ -28,6 +31,21 @@ public class Workforce {
         addWorker(Worker.workerInteractive());
     }
 
+    public void importFromTextFile(String s) {
+        File file = new File(s);
+        String line;
+        try {
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNext()) {
+                line = scanner.nextLine();
+                addWorker(Worker.workerFromString(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public Worker[] getWorkers() {
         return workers;
@@ -44,4 +62,5 @@ public class Workforce {
                 ", engagement=" + engagement +
                 '}';
     }
+
 }
