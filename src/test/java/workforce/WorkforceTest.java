@@ -19,6 +19,11 @@ public class WorkforceTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void testWhenGenderHasWrongValue(){
+        Worker worker = new Worker("Darek", "Strojecki", 2500.0, 'X', 10);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testWorkforceConstructorWhenMaxWorkersIsMoreTandOneHoundred(){
         Workforce workforce = new Workforce(111);
     }

@@ -17,7 +17,9 @@ public class Worker {
         this.name = name;
         this.surname = surname;
         this.salary = salary;
-        this.gender = gender;
+        if (gender=='f' || gender=='m' || gender=='F' || gender=='M'){
+            this.gender = Character.toLowerCase(gender);
+        } else throw new IllegalArgumentException("Wrong gender, right values is [f|F|m|M]");
         this.department = department;
     }
 
