@@ -1,8 +1,11 @@
 package workforce;
 
 
+import java.util.Scanner;
+
 // TODO - use Lombok (constructor, getter , setter, toString)
 public class Worker {
+
     private String name;
     private String surname;
     private double salary;
@@ -21,6 +24,30 @@ public class Worker {
             this.gender = Character.toLowerCase(gender);
         } else throw new IllegalArgumentException("Wrong gender, right values is [f|F|m|M]");
         this.department = department;
+    }
+
+    public static Worker workerInteractive(){
+
+        Scanner scanner = new Scanner(System.in);
+
+        String name;
+        String surname;
+        double salary;
+        char gender;
+        int department;
+
+        System.out.println("Dane użytkownika:");
+        System.out.print("Imię: ");
+        name = scanner.nextLine();
+        System.out.print("Nazwisko: ");
+        surname = scanner.nextLine();
+        System.out.print("Pobory: ");
+        salary = Double.valueOf(scanner.nextLine());
+        System.out.print("Płeć [m|f]: ");
+        gender = scanner.nextLine().charAt(0);
+        System.out.print("Wydział: ");
+        department = Integer.valueOf(scanner.nextLine());
+        return new Worker(name, surname, salary, gender, department);
     }
 
     public String getName() {

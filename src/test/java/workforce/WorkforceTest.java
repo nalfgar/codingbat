@@ -33,7 +33,7 @@ public class WorkforceTest {
     @Test
     public void testWorkforceConstructorWhenMaxWorkersIsLessTandOneHoundred(){
         Workforce workforce = new Workforce(10);
-        assertEquals(10, workforce.getEngagement());
+        assertEquals(0, workforce.getEngagement());
         assertEquals(10, workforce.getWorkers().length);
     }
 
@@ -45,4 +45,13 @@ public class WorkforceTest {
         workforce.addWorker(worker1);
         workforce.addWorker(worker2);
     }
+
+//    TODO how to test when scanner.nextLine is in tested method?
+//    @Test
+//    public void testAddWorkerInteractive(){
+//        Workforce workforce = new Workforce(1);
+//        workforce.addWorkerIneractive();
+//        assertEquals(1, workforce.getEngagement());
+//
+//    }
 }

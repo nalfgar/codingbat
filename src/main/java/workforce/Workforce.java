@@ -1,9 +1,12 @@
 package workforce;
 
+import java.util.Arrays;
+
 public class Workforce {
     private final int MAX_WORKERS = 100;
     private Worker[] workers;
     private int engagement;
+
 
     public Workforce(int i) {
         if (i > MAX_WORKERS) {
@@ -14,12 +17,17 @@ public class Workforce {
     }
 
     public void addWorker(Worker worker) {
-        if (engagement <= workers.length) {
-            workers[engagement] = worker;
-            engagement++;
+        if (engagement > workers.length) {
+            throw new ArrayIndexOutOfBoundsException();
         }
-        throw new ArrayIndexOutOfBoundsException();
+        workers[engagement] = worker;
+        engagement++;
     }
+
+    public void addWorkerIneractive() {
+        addWorker(Worker.workerInteractive());
+    }
+
 
     public Worker[] getWorkers() {
         return workers;
@@ -29,5 +37,11 @@ public class Workforce {
         return engagement;
     }
 
-
+    @Override
+    public String toString() {
+        return "Workforce{" +
+                "workers=" + Arrays.toString(workers) +
+                ", engagement=" + engagement +
+                '}';
+    }
 }
