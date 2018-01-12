@@ -19,7 +19,7 @@ public class Workforce {
         engagement = 0;
     }
 
-    public void addWorker(Worker worker){
+    public void addWorker(Worker worker) {
         if (engagement > workers.length) {
             throw new ArrayIndexOutOfBoundsException("Firm is full, has " + engagement + " workers.");
         }
@@ -63,4 +63,29 @@ public class Workforce {
                 '}';
     }
 
+    public double averageSalary() {
+        double sumSalary = 0;
+        int counter = 0;
+        for (Worker worker : workers) {
+            if (worker != null) {
+                sumSalary += worker.getSalary();
+                counter++;
+            } else break;
+        }
+
+        return sumSalary / engagement;
+    }
+
+    public double averageSalary(int department) {
+        double sumSalary = 0;
+        int counter = 0;
+        for (Worker worker:workers){
+            if (worker!=null && worker.getDepartment() == department){
+                sumSalary += worker.getSalary();
+                counter++;
+            } else break;
+        }
+
+        return sumSalary/counter;
+    }
 }
