@@ -31,8 +31,8 @@ public class Workforce {
         addWorker(Worker.workerInteractive());
     }
 
-    public void importFromTextFile(String s) {
-        File file = new File(s);
+    public void importFromTextFile(String fileName) {
+        File file = new File(fileName);
         String line;
         try {
             Scanner scanner = new Scanner(file);
@@ -45,6 +45,7 @@ public class Workforce {
             e.printStackTrace();
         }
     }
+
 
 
     public Worker[] getWorkers() {
