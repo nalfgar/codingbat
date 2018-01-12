@@ -3,6 +3,8 @@ package workforce;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Workforce {
@@ -88,4 +90,34 @@ public class Workforce {
 
         return sumSalary/counter;
     }
+
+    public int[] getDepartment() {
+        int[] departments = new int[engagement];
+
+        for (int i = 0; i < engagement; i++) {
+            departments[i] = workers[i].getDepartment();
+        }
+
+        return onlyUniqe(departments);
+    }
+
+    private int[] onlyUniqe(int[] departments) {
+        Map<Integer , Integer> departmentsMap = new HashMap<>();
+        for (int department : departments) {
+            if (!departmentsMap.containsKey(department)) {
+                departmentsMap.put(department, 0);
+            }
+        }
+
+        int[] result = new int[departmentsMap.size()];
+        int counter = 0;
+        for (Map.Entry<Integer, Integer> department : departmentsMap.entrySet()) {
+            result[counter] = department.getKey();
+            counter++;
+        }
+
+        return result;
+    }
+
+
 }
