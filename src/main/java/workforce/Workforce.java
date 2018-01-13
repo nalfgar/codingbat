@@ -1,19 +1,19 @@
 package workforce;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Workforce {
+public class Workforce implements Serializable{
     private final int MAX_WORKERS = 100;
     private Worker[] workers;
     private int engagement;
 
 
     public Workforce(int i) {
+        System.out.println("konstruktor: " + getClass().getName());
         if (i > MAX_WORKERS) {
             throw new IllegalArgumentException("Max i is 100.");
         }
@@ -121,4 +121,24 @@ public class Workforce {
     }
 
 
+    public void saveBinary(String fileName) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            outputStream.writeObject(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void openBinary(String fileName) {
+        Workforce workforce;
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
+            workforce = (Workforce) objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

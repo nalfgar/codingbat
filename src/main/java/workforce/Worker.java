@@ -1,10 +1,11 @@
 package workforce;
 
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 // TODO - use Lombok (constructor, getter , setter, toString)
-public class Worker {
+public class Worker implements Serializable{
 
     private String name;
     private String surname;
@@ -14,9 +15,10 @@ public class Worker {
 
    public boolean doesHeWorkInDepartment(int departmentNumber) {
         return departmentNumber == department;
-    }
+   }
 
-    public Worker(String name, String surname, double salary, char gender, int department) {
+   public Worker(String name, String surname, double salary, char gender, int department) {
+       System.out.println("konstruktor: " + getClass().getName());
         this.name = name;
         this.surname = surname;
         this.salary = salary;
