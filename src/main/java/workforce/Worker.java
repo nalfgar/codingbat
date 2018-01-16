@@ -17,6 +17,7 @@ public class Worker implements Serializable{
         return departmentNumber == department;
    }
 
+
    public Worker(String name, String surname, double salary, char gender, int department) {
        System.out.println("konstruktor: " + getClass().getName());
         this.name = name;
@@ -68,6 +69,8 @@ public class Worker implements Serializable{
 
         return new Worker(name, surname, salary, gender, department);
     }
+
+
 
     public String getName() {
         return name;
