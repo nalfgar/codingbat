@@ -13,7 +13,7 @@ public class Workforce implements Serializable{
 
 
     public Workforce(int i) {
-        System.out.println("konstruktor: " + getClass().getName());
+//        System.out.println("konstruktor: " + getClass().getName());
         if (i > MAX_WORKERS) {
             throw new IllegalArgumentException("Max i is 100.");
         }

@@ -1,5 +1,6 @@
 package workforce;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -7,23 +8,38 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 public class WorkforceTest {
+    private Worker worker;
+    private Worker worker1;
+    private Worker worker2;
+    private Worker worker3;
+    private Worker worker4;
+
+
+    @Before
+    public void setup(){
+        worker = new Worker("Darek", "Kopałko", 2500.0, 'M', 10);
+
+        worker1 = new Worker("Darek", "Kopałko", 1000.0, 'M', 10);
+        worker2 = new Worker("Marek", "Kopałko", 2000.0, 'M', 10);
+        worker3 = new Worker("Marek", "Kopałko", 3000.0, 'M', 10);
+        worker4 = new Worker("Marek", "Kopałko", 4000.0, 'M', 1);
+
+    }
 
 //    Worker tests
     @Test
     public void testDoesHeWorkInDepartment1(){
-        Worker worker = new Worker("Darek", "Kopałko", 2500.0, 'M', 100);
-        assertFalse(worker.doesHeWorkInDepartment(10));
+        assertFalse(worker.doesHeWorkInDepartment(100));
     }
 
     @Test
     public void testDoesHeWorkInDepartment2(){
-        Worker worker = new Worker("Darek", "Kopałko", 2500.0, 'M', 10);
         assertTrue(worker.doesHeWorkInDepartment(10));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testWhenGenderHasWrongValue(){
-        Worker worker = new Worker("Darek", "Kopałko", 2500.0, 'X', 10);
+        new Worker("Darek", "Kopałko", 2500.0, 'X', 10);
     }
 
 //    Workforce tests
@@ -51,27 +67,21 @@ public class WorkforceTest {
     @Test
     public void testAverageSalryInWorkforce(){
         Workforce workforce = new Workforce(5);
-        Worker worker1 = new Worker("Darek", "Kopałko", 2000.0, 'M', 10);
-        Worker worker2 = new Worker("Marek", "Kopałko", 2500.0, 'M', 10);
-        Worker worker3 = new Worker("Marek", "Kopałko", 3000.0, 'M', 10);
         workforce.addWorker(worker1);
         workforce.addWorker(worker2);
         workforce.addWorker(worker3);
-        assertEquals(2500.0, workforce.averageSalary(),0.00001 );
+        assertEquals(2000.0, workforce.averageSalary(),0.00001 );
     }
 
     @Test
     public void testAverageSalryInDepartment(){
         Workforce workforce = new Workforce(5);
-        Worker worker1 = new Worker("Darek", "Kopałko", 600.0, 'M', 10);
-        Worker worker2 = new Worker("Marek", "Kopałko", 500.0, 'M', 10);
-        Worker worker3 = new Worker("Marek", "Kopałko", 400.0, 'M', 10);
-        Worker worker4 = new Worker("Marek", "Kopałko", 3000.0, 'M', 1);
+
         workforce.addWorker(worker1);
         workforce.addWorker(worker2);
         workforce.addWorker(worker3);
         workforce.addWorker(worker4);
-        assertEquals(500, workforce.averageSalary(10),0.00001 );
+        assertEquals(2000, workforce.averageSalary(10),0.00001 );
     }
 
     @Test

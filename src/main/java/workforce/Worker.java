@@ -19,7 +19,7 @@ public class Worker implements Serializable{
 
 
    public Worker(String name, String surname, double salary, char gender, int department) {
-       System.out.println("konstruktor: " + getClass().getName());
+//       System.out.println("konstruktor: " + getClass().getName());
         this.name = name;
         this.surname = surname;
         this.salary = salary;
