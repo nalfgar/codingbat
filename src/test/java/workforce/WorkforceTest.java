@@ -94,7 +94,7 @@ public class WorkforceTest {
     }
 
 //    TODO object expectedWorkforce and workforce are the same in my opinion
-//    TODO but assertEuqals return error?
+//    TODO but assertEuqals returns error?
 //    @Test
 //    public void testImportFromFile(){
 //        Workforce expectedWorkforce = new Workforce(5);
