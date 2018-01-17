@@ -33,7 +33,7 @@ public class Main {
 
         System.out.println(maxPalindrome);
         long stop=System.currentTimeMillis();
-        System.out.println("Time of work:"+(stop-start)/1000 + "[s]");
+        System.out.println("Time of work:"+(stop-start)/1000.0 + "[s]");
     }
 
 
