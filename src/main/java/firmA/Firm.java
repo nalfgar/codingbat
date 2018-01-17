@@ -53,4 +53,10 @@ public class Firm {
         }
         return result;
     }
+
+    public void increasePaymentForFirm() {
+        for (Worker worker : this.workers) {
+            worker.increasePayment(10);
+        }
+    }
 }

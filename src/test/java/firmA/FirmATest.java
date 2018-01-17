@@ -86,5 +86,14 @@ public class FirmATest {
         assertEquals(1150.0, firmFull.getAveragePaymentInDepartment(10), 0.001);
     }
 
+    @Test
+    public void testIncreasePaymentForFirm(){
+        firmFull.increasePaymentForFirm();
+
+        assertEquals(1287.0, firmFull.getWorkers().get(0).getPayment(), 0.001);
+        assertEquals(1380.0, firmFull.getWorkers().get(1).getPayment(), 0.001);
+        assertEquals(1100, firmFull.getWorkers().get(2).getPayment(), 0.001);
+    }
+
 
 }
