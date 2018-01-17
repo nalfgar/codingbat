@@ -24,7 +24,7 @@ public class Main {
         long multi;
         for (Long prime1 : primes) {
             for (Long prime2 : primes) {
-                multi = Long.valueOf(prime1 * prime2);
+                multi = prime1 * prime2;
                 if (multi > maxPalindrome && isPalindrome(multi)) {
                     maxPalindrome = multi;
                 }
