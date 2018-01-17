@@ -4,9 +4,11 @@ package firmA;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
-public class Worker {
+public class Worker implements Serializable{
     private String name;
     private String surnname;
     private char gender;
@@ -36,7 +38,7 @@ public class Worker {
         return this.payment < payment;
     }
 
-    public void increasePayment(double increase) {
+    public void increasePaymentForPercent(double increase) {
         double percent = this.payment / 100;
 
         if (this.civilStatus) {
@@ -52,4 +54,7 @@ public class Worker {
     }
 
 
+    public void increasePaymentForValue(double value) {
+        this.setPayment(this.getPayment() + value);
+    }
 }

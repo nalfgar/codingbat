@@ -58,14 +58,14 @@ public class WorkerTest {
     @Test
     public void testIncreasePaymentForSingleWorker(){
 
-        singleWorker.increasePayment(5.0);
+        singleWorker.increasePaymentForPercent(5.0);
         assertEquals(1050.0, singleWorker.getPayment(), 0.001);
     }
 
     @Test
     public void testIncreasePaymentForHusbandWithChildren(){
 
-        worker.increasePayment(5.0);
+        worker.increasePaymentForPercent(5.0);
         assertEquals(1120.0, worker.getPayment(), 0.001);
     }
 

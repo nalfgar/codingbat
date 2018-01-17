@@ -3,6 +3,8 @@ package firmA;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -13,6 +15,7 @@ public class FirmATest {
 
     Firm firm;
     Firm firmFull;
+    Firm firmFull2;
 
     @Before
     public void setup(){
@@ -49,6 +52,11 @@ public class FirmATest {
         firmFull.addWorker(worker0);
         firmFull.addWorker(worker1);
         firmFull.addWorker(singleWorker);
+
+        firmFull2 = new Firm();
+        firmFull2.addWorker(worker0);
+        firmFull2.addWorker(worker1);
+        firmFull2.addWorker(singleWorker);
     }
 
     @Test
@@ -87,13 +95,24 @@ public class FirmATest {
     }
 
     @Test
-    public void testIncreasePaymentForFirm(){
-        firmFull.increasePaymentForFirm();
+    public void testIncreasePaymentForFirmForTenPercent(){
+        firmFull.increasePaymentForFirmForTenPercent();
 
         assertEquals(1287.0, firmFull.getWorkers().get(0).getPayment(), 0.001);
         assertEquals(1380.0, firmFull.getWorkers().get(1).getPayment(), 0.001);
-        assertEquals(1100, firmFull.getWorkers().get(2).getPayment(), 0.001);
+        assertEquals(1100.0, firmFull.getWorkers().get(2).getPayment(), 0.001);
     }
 
+    @Test
+    public void testIncreasePaymentForFirmForValue(){
+        assertEquals(0.5, firmFull.increasePaymentForFirmForValue(100.00), 0.001);
+    }
 
+    @Test
+    public void testSerializeDeserialize() throws InterruptedException {
+        firmFull.serialize("object-graph.bin");
+        firmFull.deserialize("object-graph.bin");
+        assertEquals(firmFull2, firmFull);
+        assertFalse(firmFull == firmFull2);
+    }
 }

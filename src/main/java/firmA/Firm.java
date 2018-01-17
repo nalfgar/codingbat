@@ -1,13 +1,13 @@
 package firmA;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class Firm {
+public class Firm implements Serializable {
     private List<Worker> workers;
 
     public void addWorker(Worker worker) {
@@ -46,7 +46,7 @@ public class Firm {
     private boolean isDepartmentInFirm(int department) {
         boolean result = false;
         for (Worker worker : this.workers) {
-            if (worker.getDepartment() == department){
+            if (worker.getDepartment() == department) {
                 result = true;
                 break;
             }
@@ -54,9 +54,51 @@ public class Firm {
         return result;
     }
 
-    public void increasePaymentForFirm() {
+    public void increasePaymentForFirmForTenPercent() {
         for (Worker worker : this.workers) {
-            worker.increasePayment(10);
+            worker.increasePaymentForPercent(10);
         }
+    }
+
+    public double increasePaymentForFirmForValue(double value) {
+        double sumIncreaseForWomen = 0;
+        double sumIncreaseForMen = 0;
+
+        for (Worker worker : workers) {
+            worker.increasePaymentForValue(value);
+            if (worker.getGender() == 'F') {
+                sumIncreaseForWomen += value;
+            } else {
+                sumIncreaseForMen += value;
+            }
+        }
+        System.out.println("Kobiety dostały: " + sumIncreaseForWomen + " podwyżki");
+        System.out.println("Mężczyźni dostali: " + sumIncreaseForMen + " podwyżki");
+
+        return sumIncreaseForWomen / sumIncreaseForMen;
+    }
+
+    public void serialize(String name) {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(name))) {
+            outputStream.writeObject(workers);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deserialize(String name) {
+        List<Worker> workerList = null;
+
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(name))){
+//            why can't cast to Firm?
+//            workerList = (Firm) objectInputStream.readObject();
+            workerList = (ArrayList<Worker>) objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        this.workers = workerList;
     }
 }
