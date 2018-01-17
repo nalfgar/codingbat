@@ -25,7 +25,7 @@ public class Main {
         for (Integer prime1 : primes) {
             for (Integer prime2 : primes) {
                 multi = prime1 * prime2;
-                if (multi > maxPalindrome && isPalindrome(String.valueOf(multi))) {
+                if (multi > maxPalindrome && isPalindrome(multi)) {
                     maxPalindrome = multi;
                 }
             }

@@ -35,7 +35,7 @@ public class App {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        System.out.println("The highest number-palindrome is: " + getHighestPalindrome(34560, 34560)); //tutaj wskazałem przykładowe liczby testowe
+        System.out.println("The highest number-palindrome is: " + getHighestPalindrome(10000, 99999)); //tutaj wskazałem przykładowe liczby testowe
         System.out.println("Total time in milliseconds is: "+(System.currentTimeMillis()-startTime));
     }
 }

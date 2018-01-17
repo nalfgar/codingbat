@@ -11,14 +11,10 @@ public class UtilsTest {
 
     @Test
     public void testIsPalindrome(){
-        assertTrue(isPalindrome("11"));
-        assertTrue(isPalindrome("1221"));
-        assertTrue(isPalindrome("12321"));
-        assertFalse(isPalindrome("123432145875457"));
-
-        assertTrue(isPalindrome("abba"));
-        assertTrue(isPalindrome("abvba"));
-        assertFalse(isPalindrome("Rabvba"));
+        assertTrue(isPalindrome(11));
+        assertTrue(isPalindrome(1221));
+        assertTrue(isPalindrome(12321));
+        assertFalse(isPalindrome(1253432147));
     }
 
     @Test

@@ -7,8 +7,8 @@ import java.util.List;
 public class Utils {
 
 
-    public static boolean isPalindrome(String string) {
-        boolean isPalindrome = true;
+    public static boolean isPalindrome(int number) {
+        String string = String.valueOf(number);
 
         int halfStringLength = string.length() / 2;
         for (int i = 0; i < halfStringLength; i++) {
@@ -16,7 +16,8 @@ public class Utils {
                 return false;
             }
         }
-        return isPalindrome;
+
+        return true;
     }
 
     public static List<Integer> getListOfPrimes(int min, int max) throws Exception {

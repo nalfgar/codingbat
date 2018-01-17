@@ -3,37 +3,13 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="35.90625" y="0.0">workforce.Worker</node>
-    <node x="51.0" y="174.0">workforce.Main</node>
-    <node x="0.0" y="87.0">workforce.Workforce</node>
+    <node x="0.0" y="0.0">firmA.Worker</node>
+    <node x="0.0" y="82.0">firmA.Firm</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="workforce.Main" target="workforce.Workforce">
-      <point x="-32.0" y="-18.5" />
-      <point x="67.0" y="149.0" />
-      <point x="33.0" y="149.0" />
-      <point x="-33.0" y="18.5" />
-    </edge>
-    <edge source="workforce.Workforce" target="workforce.Worker">
-      <point x="44.0" y="-18.5" />
-      <point x="110.0" y="62.0" />
-      <point x="105.28125" y="62.0" />
-      <point x="13.875" y="18.5" />
-    </edge>
-    <edge source="workforce.Main" target="workforce.Worker">
-      <point x="32.0" y="-18.5" />
-      <point x="131.0" y="149.0" />
-      <point x="142.5" y="149.0" />
-      <point x="142.5" y="62.0" />
-      <point x="133.03125" y="62.0" />
-      <point x="41.625" y="18.5" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="1.7000000000000002" x="88.3125" y="102.93750000000004" />
-  <SelectedNodes>
-    <node>workforce.Worker</node>
-  </SelectedNodes>
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.7000000000000002" x="88.0" y="103.0" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
