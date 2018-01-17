@@ -8,8 +8,11 @@ import static org.junit.Assert.assertFalse;
 
 public class FirmATest {
     Worker worker0;
+    Worker worker1;
     Worker singleWorker;
+
     Firm firm;
+    Firm firmFull;
 
     @Before
     public void setup(){
@@ -17,9 +20,18 @@ public class FirmATest {
                 "Starski",
                 'M',
                 10,
-                1000,
+                1100,
                 45,
                 2,
+                true);
+
+        worker1 = new Worker("Janet",
+                "Jackson",
+                'F',
+                10,
+                1200,
+                25,
+                1,
                 true);
 
         singleWorker = new Worker("John",
@@ -31,7 +43,12 @@ public class FirmATest {
                 0,
                 false);
 
+
         firm = new Firm();
+        firmFull = new Firm();
+        firmFull.addWorker(worker0);
+        firmFull.addWorker(worker1);
+        firmFull.addWorker(singleWorker);
     }
 
     @Test
@@ -44,21 +61,25 @@ public class FirmATest {
 
     @Test
     public void testRemoveWorkerAsWorker(){
-        firm.addWorker(worker0);
-        firm.addWorker(singleWorker);
 
-        firm.removeWorker(worker0);
-        assertEquals(1, firm.getWorkers().size());
-        firm.removeWorker(singleWorker);
-        assertEquals(0, firm.getWorkers().size());
+        firmFull.removeWorker(worker0);
+        assertEquals(2, firmFull.getWorkers().size());
+        firmFull.removeWorker(worker1);
+        assertEquals(1, firmFull.getWorkers().size());
     }
 
     @Test
     public void testRemoveWorkerAsIndex(){
-        firm.addWorker(worker0);
-        firm.addWorker(singleWorker);
 
-        firm.removeWorker(0);
-        assertEquals(1, firm.getWorkers().size());
+        firmFull.removeWorker(0);
+        assertEquals(2, firmFull.getWorkers().size());
     }
+
+    @Test
+    public void testGetAveragePaymentInDepartment(){
+
+        assertEquals(1150.0, firmFull.getAveragePaymentInDepartment(10), 0.001);
+    }
+
+
 }

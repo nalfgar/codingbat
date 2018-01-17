@@ -10,7 +10,7 @@ import java.util.List;
 public class Firm {
     private List<Worker> workers;
 
-    public void addWorker(Worker worker){
+    public void addWorker(Worker worker) {
         this.workers.add(worker);
     }
 
@@ -24,5 +24,18 @@ public class Firm {
 
     public void removeWorker(int index) {
         this.workers.remove(index);
+    }
+
+    public double getAveragePaymentInDepartment(int department) {
+        System.out.println("");
+        double sum = 0;
+        int workersInDepartment = 0;
+        for (Worker worker : this.workers) {
+            if (worker.getDepartment() == department) {
+                sum += worker.getPayment();
+                workersInDepartment++;
+            }
+        }
+        return sum / workersInDepartment;
     }
 }
