@@ -16,8 +16,6 @@ public class Worker {
     private int numberOfChildren;
     private boolean civilStatus;
 
-//    public void
-
     public String toStringTrimmed() {
         return "Worker{" +
                 "name='" + name + '\'' +
@@ -42,9 +40,14 @@ public class Worker {
         double percent = this.payment / 100;
 
         if (this.civilStatus) {
-            this.payment = (percent * increase) + (percent * this.numberOfChildren * 2) + (percent * 3) + this.payment;
-        }else {
-            this.payment = (percent * increase) + (percent * this.numberOfChildren * 2) + this.payment;
+            this.payment = (percent * increase)
+                        + (percent * this.numberOfChildren * 2)
+                        + (percent * 3)
+                        + this.payment;
+        } else {
+            this.payment = (percent * increase)
+                        + (percent * this.numberOfChildren * 2)
+                        + this.payment;
         }
     }
 

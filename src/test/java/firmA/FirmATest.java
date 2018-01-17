@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class FirmATest {
     Worker worker0;
@@ -39,5 +40,25 @@ public class FirmATest {
         assertEquals(1, firm.getWorkers().size());
         firm.addWorker(singleWorker);
         assertEquals(2, firm.getWorkers().size());
+    }
+
+    @Test
+    public void testRemoveWorkerAsWorker(){
+        firm.addWorker(worker0);
+        firm.addWorker(singleWorker);
+
+        firm.removeWorker(worker0);
+        assertEquals(1, firm.getWorkers().size());
+        firm.removeWorker(singleWorker);
+        assertEquals(0, firm.getWorkers().size());
+    }
+
+    @Test
+    public void testRemoveWorkerAsIndex(){
+        firm.addWorker(worker0);
+        firm.addWorker(singleWorker);
+
+        firm.removeWorker(0);
+        assertEquals(1, firm.getWorkers().size());
     }
 }

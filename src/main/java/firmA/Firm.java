@@ -17,4 +17,12 @@ public class Firm {
     public Firm() {
         this.workers = new ArrayList<>();
     }
+
+    public void removeWorker(Worker worker) {
+        this.workers.remove(worker);
+    }
+
+    public void removeWorker(int index) {
+        this.workers.remove(index);
+    }
 }
