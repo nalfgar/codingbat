@@ -75,8 +75,13 @@ public class FirmATest {
         assertEquals(2, firmFull.getWorkers().size());
     }
 
+    @Test(expected = Exception.class)
+    public void testGetAveragePaymentInDepartmentWhenInFirmAbsentDepartment() throws Exception {
+        firmFull.getAveragePaymentInDepartment(1000);
+    }
+
     @Test
-    public void testGetAveragePaymentInDepartment(){
+    public void testGetAveragePaymentInDepartment() throws Exception {
 
         assertEquals(1150.0, firmFull.getAveragePaymentInDepartment(10), 0.001);
     }

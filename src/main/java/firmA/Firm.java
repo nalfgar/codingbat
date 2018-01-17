@@ -26,16 +26,31 @@ public class Firm {
         this.workers.remove(index);
     }
 
-    public double getAveragePaymentInDepartment(int department) {
-        System.out.println("");
+    public double getAveragePaymentInDepartment(int department) throws Exception {
         double sum = 0;
         int workersInDepartment = 0;
+
+        if (isDepartmentInFirm(department)) {
+            for (Worker worker : this.workers) {
+                if (worker.getDepartment() == department) {
+                    sum += worker.getPayment();
+                    workersInDepartment++;
+                }
+            }
+            return sum / workersInDepartment;
+        } else {
+            throw new Exception("There is not department number: " + department + " in firm");
+        }
+    }
+
+    private boolean isDepartmentInFirm(int department) {
+        boolean result = false;
         for (Worker worker : this.workers) {
-            if (worker.getDepartment() == department) {
-                sum += worker.getPayment();
-                workersInDepartment++;
+            if (worker.getDepartment() == department){
+                result = true;
+                break;
             }
         }
-        return sum / workersInDepartment;
+        return result;
     }
 }
