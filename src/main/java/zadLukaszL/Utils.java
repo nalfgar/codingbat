@@ -22,7 +22,7 @@ public class Utils {
 
     public static List<Long> getListOfPrimes(long min, long max) throws Exception {
         if (max % 2 == 0) {
-            throw new Exception("the max must be odd!!!");
+            throw new Exception("The max must be odd!!!");
         }
 
         List<Long> primes = new ArrayList<>();
@@ -38,9 +38,12 @@ public class Utils {
 
     public static boolean isPrime(long n) {
 
+//        if method generate returns list witch only one item
+//        it means that n is prime number
         return generate(n).size() == 1 ? true : false;
     }
 
+//    method returns list of prime factors.
     public static List<Long> generate(long n) {
 
         List<Long> primes = new LinkedList<Long>();
