@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WorkerTest {
     private Worker worker;
+    private Worker singleWorker;
 
     @Before
     public void setup(){
@@ -20,6 +21,15 @@ public class WorkerTest {
                 45,
                 2,
                 true);
+
+        singleWorker = new Worker("Alan",
+                "Starski",
+                'M',
+                10,
+                1000,
+                45,
+                0,
+                false);
     }
 
 
@@ -44,6 +54,21 @@ public class WorkerTest {
         assertFalse(worker.isPaymentHigher(1000.0));
         assertFalse(worker.isPaymentHigher(100.0));
     }
+
+    @Test
+    public void testIncreasePaymentForSingleWorker(){
+
+        singleWorker.increasePayment(5.0);
+        assertEquals(1050.0, singleWorker.getPayment(), 0.001);
+    }
+
+    @Test
+    public void testIncreasePaymentForHusbandWithChildren(){
+
+        worker.increasePayment(5.0);
+        assertEquals(1120.0, worker.getPayment(), 0.001);
+    }
+
 
 
 }

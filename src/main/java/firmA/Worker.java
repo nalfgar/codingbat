@@ -37,4 +37,16 @@ public class Worker {
     public boolean isPaymentHigher(double payment) {
         return this.payment < payment;
     }
+
+    public void increasePayment(double increase) {
+        double percent = this.payment / 100;
+
+        if (this.civilStatus) {
+            this.payment = (percent * increase) + (percent * this.numberOfChildren * 2) + (percent * 3) + this.payment;
+        }else {
+            this.payment = (percent * increase) + (percent * this.numberOfChildren * 2) + this.payment;
+        }
+    }
+
+
 }
