@@ -7,7 +7,7 @@ import java.util.List;
 public class Utils {
 
 
-    public static boolean isPalindrome(int number) {
+    public static boolean isPalindrome(long number) {
         String string = String.valueOf(number);
 
         int halfStringLength = string.length() / 2;
@@ -20,14 +20,14 @@ public class Utils {
         return true;
     }
 
-    public static List<Integer> getListOfPrimes(int min, int max) throws Exception {
-        if (min%2==0) {
-            throw new Exception("the MIN must be odd!!!");
+    public static List<Long> getListOfPrimes(long min, long max) throws Exception {
+        if (max % 2 == 0) {
+            throw new Exception("the max must be odd!!!");
         }
 
-        List<Integer> primes = new ArrayList<>();
+        List<Long> primes = new ArrayList<>();
 
-        for (int i = min; i <= max; i += 2) {
+        for (long i = max; i >= min; i -= 2) {
             if (isPrime(i)) {
                 primes.add(i);
             }
@@ -36,16 +36,16 @@ public class Utils {
     }
 
 
-    public static boolean isPrime(int n) {
+    public static boolean isPrime(long n) {
 
         return generate(n).size() == 1 ? true : false;
     }
 
-    public static List<Integer> generate(int n) {
+    public static List<Long> generate(long n) {
 
-        List<Integer> primes = new LinkedList<Integer>();
+        List<Long> primes = new LinkedList<Long>();
 
-        for (int candidate = 2; n > 1; candidate++) {
+        for (long candidate = 2; n > 1; candidate++) {
             for (; n % candidate == 0; n /= candidate) {
                 primes.add(candidate);
             }

@@ -7,29 +7,30 @@ import static zadLukaszL.Utils.getListOfPrimes;
 import static zadLukaszL.Utils.isPalindrome;
 
 public class Main {
-    private static final int MIN = 10001; //the MIN must be odd!!!
-    private static final int MAX = 99999;
+    private static final long MIN = 10001;
+    private static final long MAX = 99999;//the MAX must be odd!!!
 
     public static void main(String[] args) {
         long start=System.currentTimeMillis();
 
-        List<Integer> primes = null;
+        List<Long> primes = null;
         try {
             primes = getListOfPrimes(MIN, MAX);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int maxPalindrome = 0;
+        long maxPalindrome = 0;
 
-        int multi;
-        for (Integer prime1 : primes) {
-            for (Integer prime2 : primes) {
-                multi = prime1 * prime2;
+        long multi;
+        for (Long prime1 : primes) {
+            for (Long prime2 : primes) {
+                multi = Long.valueOf(prime1 * prime2);
                 if (multi > maxPalindrome && isPalindrome(multi)) {
                     maxPalindrome = multi;
                 }
             }
         }
+
         System.out.println(maxPalindrome);
         long stop=System.currentTimeMillis();
         System.out.println("Czas wykonania:"+(stop-start)/1000 + "[s]");
