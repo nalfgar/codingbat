@@ -27,6 +27,11 @@ public class UtilsTest {
         assertFalse(isPrime(6));
         assertFalse(isPrime(10));
         assertTrue(isPrime(11));
+        assertFalse(isPrime(12));
+        assertTrue(isPrime(13));
+        assertFalse(isPrime(14));
+        assertTrue(isPrime(19));
+
         assertTrue(isPrime(69143));
     }
 }
