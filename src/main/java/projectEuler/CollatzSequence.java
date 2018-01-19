@@ -1,13 +1,9 @@
 package projectEuler;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class CollatzSequence {
 
-    public static List<Integer> collatzSequence(int n) {
-        List<Integer> result = new LinkedList<>();
-        result.add(n);
+    public static int howLongIscollatzSequence(int n) {
+        int counter = 0;
 
         while (n != 1) {
             if (n % 2 == 0) {
@@ -15,9 +11,9 @@ public class CollatzSequence {
             } else {
                 n = (3 * n) + 1;
             }
-            result.add(n);
+            counter++;
         }
-        return result;
+        return counter;
     }
 
     public static int longestCollatzSequence(int n){
@@ -26,7 +22,7 @@ public class CollatzSequence {
         int result = 0;
 
         for (int i = 1; i < n; i++) {
-            lenghtOfSequence = collatzSequence(i).size();
+            lenghtOfSequence = howLongIscollatzSequence(i);
             if (lenghtOfSequence > max) {
                 max = lenghtOfSequence;
                 result = i;
