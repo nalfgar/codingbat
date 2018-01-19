@@ -1,13 +1,15 @@
 package codility;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+// Correctness 100%
+// Performance 33%
+//Task score 71% :-(
 public class CountFactors {
+    public static void main(String[] args) {
+        System.out.println(countFactors(39916800));
+    }
+
     public static int countFactors(int N) {
-        Map<Integer, Boolean> a = new HashMap<>();
         int counter = 2;
 
         if (N == 1) {
@@ -15,13 +17,17 @@ public class CountFactors {
         } else if (N == 2) {
             counter = 2;
         } else if (N % 2 != 0) {
-            for (int i = 3; i < N; i += 2) {
+            for (int i = 3; i < (N / 2); i += 2) {
                 if (N % i == 0) {
                     counter++;
                 }
             }
         } else {
-
+            for (int i = 2; i <= ( N / 2); i++) {
+                if (N % i == 0) {
+                    counter++;
+                }
+            }
         }
 
         return counter;

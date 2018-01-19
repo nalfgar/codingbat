@@ -1,5 +1,7 @@
 package zadLukaszL;
 
+import projectEuler.Tools;
+
 import java.util.List;
 
 import static zadLukaszL.Utils.generate;
@@ -12,8 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
         long start=System.currentTimeMillis();
-
-        System.out.println(findMaxPalindrome());
+        System.out.println(Tools.generatePrimes(24));
+//        System.out.println(findMaxPalindrome());
 
         long stop=System.currentTimeMillis();
         System.out.println("Time of work:"+(stop-start)/1000.0 + "[s]");

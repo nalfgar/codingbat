@@ -21,9 +21,20 @@ public class CountFactorsTest {
     public void testFour(){
         assertEquals(2, countFactors(5));
     }
-@Test
+
+    @Test
     public void testFive(){
         assertEquals(2, countFactors(5));
+    }
+
+    @Test
+    public void testSix(){
+        assertEquals(4, countFactors(6));
+    }
+
+    @Test
+    public void testTwelve(){
+        assertEquals(6, countFactors(12));
     }
 
 
