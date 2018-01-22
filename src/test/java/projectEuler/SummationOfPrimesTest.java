@@ -24,7 +24,6 @@ public class SummationOfPrimesTest {
         assertEquals(41, SummationOfPrimes.summationOfPrimes(15));
     }
 
-
     @Test
     public void testTwenty(){
         assertEquals(77, SummationOfPrimes.summationOfPrimes(20));

@@ -8,6 +8,7 @@ public class SummationOfPrimes {
     public static long summationOfPrimes(int N) {
         long sum = 2;
 
+//        TODO very slow!!!
         for (int i = 3; i <= N; i += 2) {
             if (Tools.generatePrimes(i).size() == 1){
                 sum += i;
