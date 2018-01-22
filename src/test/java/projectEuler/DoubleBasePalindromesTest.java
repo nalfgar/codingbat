@@ -3,7 +3,7 @@ package projectEuler;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
-import static projectEuler.Tools.isDoubleBasePalindrome;
+import static projectEuler.tools.Palindrome.isDoubleBasePalindrome;
 
 public class DoubleBasePalindromesTest {
 
