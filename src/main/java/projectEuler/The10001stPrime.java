@@ -1,6 +1,8 @@
 package projectEuler;
 
-import java.util.List;
+import projectEuler.tools.Palindrome;
+
+import static projectEuler.tools.Primes.generatePrimes;
 
 public class The10001stPrime {
     public static int the10001stPrime(int number) {
@@ -8,7 +10,7 @@ public class The10001stPrime {
         int countPrime = 0;
 
         while (countPrime < number) {
-            if (Tools.generatePrimes(i).size() == 1) {
+            if (generatePrimes(i).size() == 1) {
                 countPrime++;
             }
             i++;
