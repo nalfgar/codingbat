@@ -1,7 +1,5 @@
 package workforce;
 
-import javafx.geometry.Point2D;
-import javafx.geometry.Point3D;
 
 import java.beans.XMLEncoder;
 import java.io.BufferedOutputStream;

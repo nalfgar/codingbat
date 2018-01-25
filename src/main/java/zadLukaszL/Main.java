@@ -1,10 +1,8 @@
 package zadLukaszL;
 
-import projectEuler.Tools;
-
 import java.util.List;
 
-import static zadLukaszL.Utils.generate;
+import static projectEuler.tools.Primes.generatePrimes;
 import static zadLukaszL.Utils.getListOfPrimes;
 import static zadLukaszL.Utils.isPalindrome;
 
@@ -14,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         long start=System.currentTimeMillis();
-        System.out.println(Tools.generatePrimes(24));
+        System.out.println(generatePrimes(24));
 //        System.out.println(findMaxPalindrome());
 
         long stop=System.currentTimeMillis();

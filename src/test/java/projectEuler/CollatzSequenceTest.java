@@ -5,8 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static projectEuler.CollatzSequence.howLongIscollatzSequence;
+import static projectEuler.CollatzSequence.longestCollatzSequence;
 
 public class CollatzSequenceTest {
 
@@ -23,7 +22,7 @@ public class CollatzSequenceTest {
         expectedList.add(4);
         expectedList.add(2);
         expectedList.add(1);
-        assertEquals(9, howLongIscollatzSequence(13));
-//        System.out.println(longestCollatzSequence(1000000));
+//        assertEquals(9, howLongIscollatzSequence(13));
+        System.out.println(longestCollatzSequence(1000000));
     }
 }
