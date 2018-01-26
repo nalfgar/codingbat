@@ -5,8 +5,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Data
 public class Hand {
@@ -52,23 +51,29 @@ public class Hand {
             multimap.put(orderCodeMap.get(Character.toString(stringDatum.charAt(0))),
                     Character.toString(stringDatum.charAt(1)));
         }
-        System.out.println(multimap);
         analize();
-        System.out.println(rankOfHand);
     }
 
 
     public void analize() {
         switch (multimap.keySet().size()) {
             case 5:
-                if (!isStraight()){
-                    rankOfHand = getMaxValue();
+                if (!isStraight()) {
+                    if (theSameSuitInHand()) {
+                        rankOfHand = 400;
+                    }
                 } else {
-                    rankOfHand = 400 + getMaxValue();
+                    if (!theSameSuitInHand()) {
+                        rankOfHand = 400 + getMaxValue();
+                    } else if (!isRoyal()) {
+                        rankOfHand = 600 + getMaxValue();
+                    } else {
+                        rankOfHand = 700 + getMaxValue();
+                    }
                 }
                 break;
             case 4:
-                rankOfHand = 100 + getMaxValue();
+                rankOfHand = 100 + getMaxValueOfPair();
                 break;
             case 3:
                 if (!areTreeOfKind()) {
@@ -77,7 +82,59 @@ public class Hand {
                     rankOfHand = 300 + getMaxValue();
                 }
                 break;
+            case 2:
+                if (isFullHouse()) {
+                    rankOfHand = 400 + getMaxValue();
+                } else {
+                    rankOfHand = 500 + getMaxValue();
+                }
+                break;
         }
+    }
+
+    private int getMaxValueOfPair() {
+        int result = 0;
+
+        for (Integer integer : multimap.keys()) {
+            if (multimap.get(integer).size() == 2) {
+                result = integer;
+            }
+        }
+        return result;
+    }
+
+    private boolean isRoyal() {
+        int[] royal = new int[]{10, 11, 12, 13, 14};
+
+        for (int i : royal) {
+            if (!multimap.keys().contains(i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean theSameSuitInHand() {
+        Set<String> suits = new HashSet<>();
+        for (String string : multimap.values()) {
+            suits.add(string);
+        }
+        return suits.size() == 1 ? true : false;
+    }
+
+    private boolean isFullHouse() {
+        boolean result = false;
+        List<Integer> results = new ArrayList<>();
+
+        for (Integer integer : multimap.keySet()) {
+            results.add(multimap.get(integer).size());
+        }
+
+        if ((results.get(0) == 2 && results.get(1) == 3) || (results.get(0) == 2 && results.get(1) == 3)) {
+            result = true;
+        }
+        return result;
     }
 
     private boolean isStraight() {
@@ -86,9 +143,9 @@ public class Hand {
         boolean start = true;
 
         for (Integer integer : multimap.keySet()) {
-            if (start){
+            if (start) {
                 start = false;
-            } else if (integer == previous + 1){
+            } else if (integer == previous + 1) {
                 result = true;
             } else {
                 result = false;
