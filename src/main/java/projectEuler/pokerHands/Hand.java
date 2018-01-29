@@ -37,9 +37,8 @@ public class Hand {
             multimap.put(orderCodeMap.get(Character.toString(stringDatum.charAt(0))),
                     Character.toString(stringDatum.charAt(1)));
         }
-        analize();
-//        System.out.println(multimap);
 
+        analize();
     }
 
 
@@ -104,8 +103,8 @@ public class Hand {
             }
         }
         notPair.sort(Comparator.naturalOrder());
-        sum += notPair.get(2) * 70;
-        sum += notPair.get(0) * 40;
+        sum += notPair.get(2) * 60;
+        sum += notPair.get(0) * 20;
         sum += notPair.get(1);
         return sum;
     }

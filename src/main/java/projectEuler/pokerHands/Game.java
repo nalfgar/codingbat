@@ -14,8 +14,8 @@ public class Game {
 
 
     public int whoWins() {
-        System.out.println(h1.getRankOfHand());
-        System.out.println(h2.getRankOfHand());
+//        System.out.println(h1.getRankOfHand());
+//        System.out.println(h2.getRankOfHand());
         return h1.getRankOfHand() > h2.getRankOfHand() ? 1 : 2;
     }
 }
