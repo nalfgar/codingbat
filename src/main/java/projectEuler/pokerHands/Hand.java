@@ -48,18 +48,30 @@ public class Hand {
                 if (isTheSameSuit() && isRoyalFlush()) {
                     rankOfHand = 10000;
                 } else if (isTheSameSuit() && isStraight()) {
-                    rankOfHand = 8000 + maxStraight().get();
+                    rankOfHand = 8000 + getMaxStraight().get();
+                } else if(isTheSameSuit()){
+                    rankOfHand = 5000 + getMaxOfCard().get();
+                } else if (isStraight()){
+                    rankOfHand = 4000 + getMaxOfCard().get();
                 }
+                break;
             case 2:
                 if (isFourOfKind()) {
-                    rankOfHand = 7000 + maxFourOfKind();
+                    rankOfHand = 7000 + getMaxFourOfKind();
                 } else {
-                    rankOfHand = 6000 + maxOfFoulHouse();
+                    rankOfHand = 6000 + getMaxOfFoulHouse();
                 }
+                break;
         }
     }
 
-    private int maxOfFoulHouse() {
+    private Optional<Integer> getMaxOfCard() {
+        return multimap.keySet()
+                        .stream()
+                        .max(Comparator.naturalOrder());
+    }
+
+    private int getMaxOfFoulHouse() {
         int sum = 0;
         for (Integer key : multimap.keySet()) {
             if (multimap.get(key).size() == 3) {
@@ -71,7 +83,7 @@ public class Hand {
         return sum;
     }
 
-    private int maxFourOfKind() {
+    private int getMaxFourOfKind() {
         int sum = 0;
         for (Integer key : multimap.keySet()) {
             if (multimap.get(key).size() == 4) {
@@ -93,7 +105,7 @@ public class Hand {
                 || (quantities.get(0) == 4 && quantities.get(1) == 1)) ? true : false;
     }
 
-    private Optional<Integer> maxStraight() {
+    private Optional<Integer> getMaxStraight() {
         return multimap.keySet().stream().max(Comparator.naturalOrder());
     }
 

@@ -22,12 +22,16 @@ public class PokerHandsTest {
 //        Three of a Kind: Three cards of the same value.
 //        Hand h4 = new Hand("2C 2H 6H 2S QH");
 //        assertEquals(312, h4.getRankOfHand());
+
 //        Straight: All cards are consecutive values.
-//        Hand h5 = new Hand("2C 3H 4H 5S 6H");
-//        assertEquals(406, h5.getRankOfHand());
+        Hand h5 = new Hand("2C 3H 4H 5S 6H");
+        assertEquals(4006, h5.getRankOfHand());
+
 //        Flush: All cards of the same suit.
-//         Hand h6 = new Hand("3D 6D 7D TD QD");
-//        assertEquals(406, h6.getRankOfHand());
+//        Hand h6 = new Hand("3D 6D 7D TD QD");
+//        assertEquals(5012, h6.getRankOfHand());
+//        Hand h6a = new Hand("3D 6D 7D TD AD");
+//        assertEquals(5014, h6a.getRankOfHand());
 
 //        Full House: Three of a kind and a pair.
 //        Hand h7 = new Hand("4C 2H 4H 2S 4S");
@@ -51,7 +55,7 @@ public class PokerHandsTest {
     }
 
     @Test
-    public void testGame(){
+    public void testGame() {
 
 //        Game game1 = new Game("5H 5C 6S 7S KD", "2C 3S 8S 8D TD");
 //        assertEquals(2, game1.whoWins());
@@ -68,7 +72,7 @@ public class PokerHandsTest {
 //        Game game5 = new Game("2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
 //        assertEquals(1, game5.whoWins());
 
-       Game game5 = new Game("8H 9H TH JH QH", "7H 8H  9H TH JH");
+        Game game5 = new Game("8H 9H TH JH QH", "7H 8H  9H TH JH");
         assertEquals(1, game5.whoWins());
 
 
