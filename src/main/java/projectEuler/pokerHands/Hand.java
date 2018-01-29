@@ -37,158 +37,103 @@ public class Hand {
                     Character.toString(stringDatum.charAt(1)));
         }
         analize();
+//        System.out.println(multimap);
+
     }
 
 
     public void analize() {
         switch (multimap.keySet().size()) {
             case 5:
-                if (hasTheSameSuit() && isRoyal()){
+                if (isTheSameSuit() && isRoyalFlush()) {
                     rankOfHand = 10000;
-                } else if (hasTheSameSuit() && isStraight()){
-                    rankOfHand = 9000 + 20 * getValueOfHand();
-                } else if (hasTheSameSuit()){
-                    rankOfHand = 6000 + 12 * getValueOfHand();
-                } else if (isStraight()){
-                    rankOfHand = 5000 + 10 * getValueOfHand();
-                } else {
-                    rankOfHand = 2000 + getMaxValue();
+                } else if (isTheSameSuit() && isStraight()) {
+                    rankOfHand = 8000 + maxStraight().get();
                 }
-                break;
-            case 4:
-                rankOfHand = 1000 + getMaxValue();
-                break;
-            case 3:
-                if (areTwoPairs()){
-                    rankOfHand = 3000 + 6 * getValueOfHand();
-                } else {
-                    rankOfHand = 4000 + 8 * getValueOfHand();
-                }
-                break;
             case 2:
-                if (areFourOfKind()){
-                    rankOfHand = 8000 + 16 * getValueOfHand();
-                } else if (isFullHouse()){
-                    rankOfHand = 7000 + 14 * getValueOfHand();
+                if (isFourOfKind()) {
+                    rankOfHand = 7000 + maxFourOfKind();
+                } else {
+                    rankOfHand = 6000 + maxOfFoulHouse();
                 }
-                break;
         }
     }
 
-    private boolean areTwoPairs() {
-        List<Integer> results = new ArrayList<>();
-        for (Integer integer : multimap.keySet()) {
-            results.add(multimap.get(integer).size());
-        }
-        results.sort(Comparator.naturalOrder());
-        if (results.get(1) == 2 && results.get(2) == 2){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean areFourOfKind() {
-        boolean result = false;
-        List<Integer> results = new ArrayList<>();
-
-        for (Integer integer : multimap.keySet()) {
-            results.add(multimap.get(integer).size());
-        }
-
-        if ((results.get(0) == 1 && results.get(1) == 4) || (results.get(0) == 4 && results.get(1) == 1)) {
-            result = true;
-        }
-        return result;
-    }
-
-    private int getValueOfHand() {
-        int value = 0;
-        for (Integer integer : multimap.keys()) {
-            value += integer;
-        }
-
-        return value;
-    }
-
-    private int getMaxValueOfPair() {
-        int result = 0;
-
-        for (Integer integer : multimap.keys()) {
-            if (multimap.get(integer).size() == 2) {
-                result = integer;
+    private int maxOfFoulHouse() {
+        int sum = 0;
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 3) {
+                sum += key * 10;
+            } else {
+                sum += key;
             }
         }
-        return result;
+        return sum;
     }
 
-    private boolean isRoyal() {
-        int[] royal = new int[]{10, 11, 12, 13, 14};
+    private int maxFourOfKind() {
+        int sum = 0;
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 4) {
+                sum += key * 10;
+            } else {
+                sum += key;
+            }
+        }
+        return sum;
+    }
 
-        for (int i : royal) {
-            if (!multimap.keys().contains(i)) {
+    private boolean isFourOfKind() {
+        List<Integer> quantities = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            quantities.add(multimap.get(key).size());
+        }
+        return ((quantities.get(0) == 1 && quantities.get(1) == 4)
+                || (quantities.get(0) == 4 && quantities.get(1) == 1)) ? true : false;
+    }
+
+    private Optional<Integer> maxStraight() {
+        return multimap.keySet().stream().max(Comparator.naturalOrder());
+    }
+
+    private boolean isTheSameSuit() {
+        Set<String> suits = new HashSet<>();
+        for (String suit : multimap.values()) {
+            suits.add(suit);
+        }
+
+        return suits.size() == 1 ? true : false;
+    }
+
+    private boolean isStraight() {
+        int previous = 0;
+        boolean start = true;
+
+        for (Integer cardValue : multimap.keySet()) {
+            if (start) {
+                start = false;
+                previous = cardValue;
+                continue;
+            } else {
+                if (cardValue != previous + 1) {
+                    return false;
+                }
+            }
+            previous = cardValue;
+        }
+        return true;
+    }
+
+    private boolean isRoyalFlush() {
+        int[] royalFlush = new int[]{10, 11, 12, 13, 14};
+
+        for (int card : royalFlush) {
+            if (!multimap.keySet().contains(card)) {
                 return false;
             }
         }
 
         return true;
-    }
-
-    private boolean hasTheSameSuit() {
-        Set<String> suits = new HashSet<>();
-        for (String string : multimap.values()) {
-            suits.add(string);
-        }
-        return suits.size() == 1 ? true : false;
-    }
-
-    private boolean isFullHouse() {
-        boolean result = false;
-        List<Integer> results = new ArrayList<>();
-
-        for (Integer integer : multimap.keySet()) {
-            results.add(multimap.get(integer).size());
-        }
-
-        if ((results.get(0) == 2 && results.get(1) == 3) || (results.get(0) == 2 && results.get(1) == 3)) {
-            result = true;
-        }
-        return result;
-    }
-
-    private boolean isStraight() {
-        boolean result = false;
-        int previous = -1;
-        boolean start = true;
-
-        for (Integer integer : multimap.keySet()) {
-            if (start) {
-                start = false;
-            } else if (integer == previous + 1) {
-                result = true;
-            } else {
-                result = false;
-                break;
-            }
-            previous = integer;
-        }
-
-        return result;
-    }
-
-    private boolean areTreeOfKind() {
-        boolean result = false;
-        for (Integer integer : multimap.keySet()) {
-            if (multimap.get(integer).size() == 3) {
-                result = true;
-            }
-        }
-
-        return result;
-    }
-
-    private int getMaxValue() {
-        return multimap.keySet()
-                .stream()
-                .reduce(Integer.MIN_VALUE, (a, b) -> Integer.max(a, b));
     }
 }
