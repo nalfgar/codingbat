@@ -55,6 +55,9 @@ public class Hand {
                     rankOfHand = 4000 + getMaxOfCard().get();
                 }
                 break;
+            case 4:
+                rankOfHand = 1000 + getMaxOfOnePair();
+                break;
             case 3:
                 if (isThreeOfKind()){
                     rankOfHand = 3000 + getMaxOfThreeOfKind();
@@ -70,6 +73,26 @@ public class Hand {
                 }
                 break;
         }
+    }
+
+    private int getMaxOfOnePair() {
+        int sum = 0;
+        int max;
+        int min;
+        List<Integer> notPair = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 2) {
+                sum += key * 100;
+            } else {
+                notPair.add(key);
+            }
+        }
+        notPair.sort(Comparator.naturalOrder());
+        sum += notPair.get(2) * 70;
+        sum += notPair.get(0) * 40;
+        sum += notPair.get(1);
+        return sum;
     }
 
     private int getMaxOfTwoPairs() {
