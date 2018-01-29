@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import lombok.Data;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 public class Hand {
@@ -48,18 +49,116 @@ public class Hand {
                 if (isTheSameSuit() && isRoyalFlush()) {
                     rankOfHand = 10000;
                 } else if (isTheSameSuit() && isStraight()) {
-                    rankOfHand = 8000 + maxStraight().get();
+                    rankOfHand = 8000 + getMaxStraight().get();
+                } else if (isTheSameSuit()) {
+                    rankOfHand = 5000 + getMaxOfCard().get();
+                } else if (isStraight()) {
+                    rankOfHand = 4000 + getMaxOfCard().get();
+                } else {
+                    rankOfHand = getMAxOfHighCard();
                 }
+                break;
+            case 4:
+                rankOfHand = 1000 + getMaxOfOnePair();
+                break;
+            case 3:
+                if (isThreeOfKind()) {
+                    rankOfHand = 3000 + getMaxOfThreeOfKind();
+                } else {
+                    rankOfHand = 2000 + getMaxOfTwoPairs();
+                }
+                break;
             case 2:
                 if (isFourOfKind()) {
-                    rankOfHand = 7000 + maxFourOfKind();
+                    rankOfHand = 7000 + getMaxFourOfKind();
                 } else {
-                    rankOfHand = 6000 + maxOfFoulHouse();
+                    rankOfHand = 6000 + getMaxOfFoulHouse();
                 }
+                break;
         }
     }
 
-    private int maxOfFoulHouse() {
+    private int getMAxOfHighCard() {
+        int sum = 0;
+        int counter = 1;
+        Set<Integer> keysSet = multimap.keySet();
+        keysSet = keysSet.stream().sorted().collect(Collectors.toSet());
+        for (Integer key : keysSet) {
+            sum += key * counter;
+            counter =+ 20;
+        }
+        return sum;
+    }
+
+    private int getMaxOfOnePair() {
+        int sum = 0;
+        int max;
+        int min;
+        List<Integer> notPair = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 2) {
+                sum += key * 100;
+            } else {
+                notPair.add(key);
+            }
+        }
+        notPair.sort(Comparator.naturalOrder());
+        sum += notPair.get(2) * 70;
+        sum += notPair.get(0) * 40;
+        sum += notPair.get(1);
+        return sum;
+    }
+
+    private int getMaxOfTwoPairs() {
+        int sum = 0;
+        List<Integer> pairs = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 2) {
+                pairs.add(key);
+            } else {
+                sum += key;
+            }
+        }
+        sum += pairs.stream().max(Comparator.naturalOrder()).get() * 100;
+        sum += pairs.stream().min(Comparator.naturalOrder()).get() * 10;
+        return sum;
+    }
+
+    private int getMaxOfThreeOfKind() {
+        int sum = 0;
+        List<Integer> notThree = new LinkedList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 3) {
+                sum += 100 * key;
+            } else if (multimap.get(key).size() == 1) {
+                notThree.add(key);
+            }
+        }
+        sum += notThree.stream().max(Comparator.naturalOrder()).get() * 10;
+        sum += notThree.stream().min(Comparator.naturalOrder()).get();
+        return sum;
+    }
+
+    private boolean isThreeOfKind() {
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Optional<Integer> getMaxOfCard() {
+        return multimap.keySet()
+                .stream()
+                .max(Comparator.naturalOrder());
+    }
+
+    private int getMaxOfFoulHouse() {
         int sum = 0;
         for (Integer key : multimap.keySet()) {
             if (multimap.get(key).size() == 3) {
@@ -71,7 +170,7 @@ public class Hand {
         return sum;
     }
 
-    private int maxFourOfKind() {
+    private int getMaxFourOfKind() {
         int sum = 0;
         for (Integer key : multimap.keySet()) {
             if (multimap.get(key).size() == 4) {
@@ -93,7 +192,7 @@ public class Hand {
                 || (quantities.get(0) == 4 && quantities.get(1) == 1)) ? true : false;
     }
 
-    private Optional<Integer> maxStraight() {
+    private Optional<Integer> getMaxStraight() {
         return multimap.keySet().stream().max(Comparator.naturalOrder());
     }
 
