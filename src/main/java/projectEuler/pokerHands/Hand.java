@@ -104,8 +104,8 @@ public class Hand {
             }
         }
         notPair.sort(Comparator.naturalOrder());
-        sum += notPair.get(2) * 70;
-        sum += notPair.get(0) * 40;
+        sum += notPair.get(2) * 60;
+        sum += notPair.get(0) * 20;
         sum += notPair.get(1);
         return sum;
     }

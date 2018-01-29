@@ -60,9 +60,9 @@ public class PokerHandsTest {
     @Test
     public void testGame() {
 
-//        Game game1 = new Game("5H 5C 6S 7S KD", "2C 3S 8S 8D TD");
-//        assertEquals(2, game1.whoWins());
-//
+        Game game1 = new Game("5H 5C 6S 7S KD", "2C 3S 8S 8D TD");
+        assertEquals(2, game1.whoWins());
+
 //        Game game2 = new Game("5D 8C 9S JS AC", "2C 5C 7D 8S QH");
 //        assertEquals(1, game2.whoWins());
 
@@ -75,8 +75,8 @@ public class PokerHandsTest {
 //        Game game5 = new Game("2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
 //        assertEquals(1, game5.whoWins());
 
-        Game game5 = new Game("8H 9H TH JH QH", "7H 8H  9H TH JH");
-        assertEquals(1, game5.whoWins());
+//        Game game5 = new Game("8H 9H TH JH QH", "7H 8H  9H TH JH");
+//        assertEquals(1, game5.whoWins());
 
 
     }
