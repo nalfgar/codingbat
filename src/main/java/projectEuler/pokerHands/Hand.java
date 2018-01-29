@@ -10,7 +10,6 @@ import java.util.*;
 @Data
 public class Hand {
     private Map<String, Integer> orderCodeMap = new HashMap<>();
-    private Map<String, Integer> rankOfHandMap = new HashMap<>();
     private Multimap<Integer, String> multimap = ArrayListMultimap.create();
     private int rankOfHand = 0;
 
@@ -30,20 +29,6 @@ public class Hand {
         orderCodeMap.put("A", 14);
     }
 
-    private void fillRankOfHand() {
-        rankOfHandMap.put("High Card", 0);
-        rankOfHandMap.put("One Pair", 100);
-        rankOfHandMap.put("Two Pairs", 200);
-        rankOfHandMap.put("Three of a Kind", 300);
-        rankOfHandMap.put("Straight", 400);
-        rankOfHandMap.put("Flush", 500);
-        rankOfHandMap.put("Full House", 600);
-        rankOfHandMap.put("Four of a Kind", 700);
-        rankOfHandMap.put("Straight Flush", 800);
-        rankOfHandMap.put("Royal Flush", 900);
-    }
-
-
     public Hand(String data) {
         fillOrderCode();
         String[] stringData = data.split("\\s+");
@@ -58,38 +43,71 @@ public class Hand {
     public void analize() {
         switch (multimap.keySet().size()) {
             case 5:
-                if (!isStraight()) {
-                    if (theSameSuitInHand()) {
-                        rankOfHand = 400;
-                    }
+                if (hasTheSameSuit() && isRoyal()){
+                    rankOfHand = 10000;
+                } else if (hasTheSameSuit() && isStraight()){
+                    rankOfHand = 9000 + 20 * getValueOfHand();
+                } else if (hasTheSameSuit()){
+                    rankOfHand = 6000 + 12 * getValueOfHand();
+                } else if (isStraight()){
+                    rankOfHand = 5000 + 10 * getValueOfHand();
                 } else {
-                    if (!theSameSuitInHand()) {
-                        rankOfHand = 400 + getMaxValue();
-                    } else if (!isRoyal()) {
-                        rankOfHand = 600 + getMaxValue();
-                    } else {
-                        rankOfHand = 700 + getMaxValue();
-                    }
+                    rankOfHand = 2000 + getMaxValue();
                 }
                 break;
             case 4:
-                rankOfHand = 100 + getMaxValueOfPair();
+                rankOfHand = 1000 + getMaxValue();
                 break;
             case 3:
-                if (!areTreeOfKind()) {
-                    rankOfHand = 200 + getMaxValue();
+                if (areTwoPairs()){
+                    rankOfHand = 3000 + 6 * getValueOfHand();
                 } else {
-                    rankOfHand = 300 + getMaxValue();
+                    rankOfHand = 4000 + 8 * getValueOfHand();
                 }
                 break;
             case 2:
-                if (isFullHouse()) {
-                    rankOfHand = 400 + getMaxValue();
-                } else {
-                    rankOfHand = 500 + getMaxValue();
+                if (areFourOfKind()){
+                    rankOfHand = 8000 + 16 * getValueOfHand();
+                } else if (isFullHouse()){
+                    rankOfHand = 7000 + 14 * getValueOfHand();
                 }
                 break;
         }
+    }
+
+    private boolean areTwoPairs() {
+        List<Integer> results = new ArrayList<>();
+        for (Integer integer : multimap.keySet()) {
+            results.add(multimap.get(integer).size());
+        }
+        results.sort(Comparator.naturalOrder());
+        if (results.get(1) == 2 && results.get(2) == 2){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean areFourOfKind() {
+        boolean result = false;
+        List<Integer> results = new ArrayList<>();
+
+        for (Integer integer : multimap.keySet()) {
+            results.add(multimap.get(integer).size());
+        }
+
+        if ((results.get(0) == 1 && results.get(1) == 4) || (results.get(0) == 4 && results.get(1) == 1)) {
+            result = true;
+        }
+        return result;
+    }
+
+    private int getValueOfHand() {
+        int value = 0;
+        for (Integer integer : multimap.keys()) {
+            value += integer;
+        }
+
+        return value;
     }
 
     private int getMaxValueOfPair() {
@@ -115,7 +133,7 @@ public class Hand {
         return true;
     }
 
-    private boolean theSameSuitInHand() {
+    private boolean hasTheSameSuit() {
         Set<String> suits = new HashSet<>();
         for (String string : multimap.values()) {
             suits.add(string);
