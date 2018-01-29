@@ -47,8 +47,54 @@ public class Hand {
             case 5:
                 if (isTheSameSuit() && isRoyalFlush()) {
                     rankOfHand = 10000;
+                } else if (isTheSameSuit() && isStraight()) {
+                    rankOfHand = 8000 + maxStraight().get();
+                }
+            case 2:
+                if (isFourOfKind()) {
+                    rankOfHand = 7000 + maxFourOfKind();
+                } else {
+                    rankOfHand = 6000 + maxOfFoulHouse();
                 }
         }
+    }
+
+    private int maxOfFoulHouse() {
+        int sum = 0;
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 3) {
+                sum += key * 10;
+            } else {
+                sum += key;
+            }
+        }
+        return sum;
+    }
+
+    private int maxFourOfKind() {
+        int sum = 0;
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 4) {
+                sum += key * 10;
+            } else {
+                sum += key;
+            }
+        }
+        return sum;
+    }
+
+    private boolean isFourOfKind() {
+        List<Integer> quantities = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            quantities.add(multimap.get(key).size());
+        }
+        return ((quantities.get(0) == 1 && quantities.get(1) == 4)
+                || (quantities.get(0) == 4 && quantities.get(1) == 1)) ? true : false;
+    }
+
+    private Optional<Integer> maxStraight() {
+        return multimap.keySet().stream().max(Comparator.naturalOrder());
     }
 
     private boolean isTheSameSuit() {
@@ -66,14 +112,15 @@ public class Hand {
 
         for (Integer cardValue : multimap.keySet()) {
             if (start) {
-                previous = cardValue;
                 start = false;
+                previous = cardValue;
                 continue;
             } else {
                 if (cardValue != previous + 1) {
                     return false;
                 }
             }
+            previous = cardValue;
         }
         return true;
     }

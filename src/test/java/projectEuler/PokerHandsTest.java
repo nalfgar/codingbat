@@ -28,18 +28,26 @@ public class PokerHandsTest {
 //        Flush: All cards of the same suit.
 //         Hand h6 = new Hand("3D 6D 7D TD QD");
 //        assertEquals(406, h6.getRankOfHand());
+
 //        Full House: Three of a kind and a pair.
 //        Hand h7 = new Hand("4C 2H 4H 2S 4S");
-//        assertEquals(404, h7.getRankOfHand());
+//        assertEquals(6042, h7.getRankOfHand());
+//        Hand h7a = new Hand("9C 9H 9S 4H 4S");
+//        assertEquals(6094, h7a.getRankOfHand());
+
 //        Four of a Kind: Four cards of the same value.
 //        Hand h8 = new Hand("4H 4D 4S 4C JC");
-//        assertEquals(511, h8.getRankOfHand());
+//        assertEquals(7051, h8.getRankOfHand());
+//        Hand h8a = new Hand("TH TD TS 4C TC");
+//        assertEquals(7104, h8a.getRankOfHand());
+
 //        Straight Flush: All cards are consecutive values of same suit.
 //        Hand h9 = new Hand("8H 9H TH JH QH");
 //        assertEquals(8500, h9.getRankOfHand());
+
 //        Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-        Hand h10 = new Hand("TS JS QS KS AS");
-        assertEquals(10000, h10.getRankOfHand());
+//        Hand h10 = new Hand("TS JS QS KS AS");
+//        assertEquals(10000, h10.getRankOfHand());
     }
 
     @Test
@@ -57,7 +65,10 @@ public class PokerHandsTest {
 //        Game game4 = new Game("4D 6S 9H QH QC", "3D 6D 7H QD QS");
 //        assertEquals(1, game4.whoWins());
 
-        Game game5 = new Game("2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
+//        Game game5 = new Game("2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
+//        assertEquals(1, game5.whoWins());
+
+       Game game5 = new Game("8H 9H TH JH QH", "7H 8H  9H TH JH");
         assertEquals(1, game5.whoWins());
 
 
