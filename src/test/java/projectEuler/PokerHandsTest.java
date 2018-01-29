@@ -17,8 +17,8 @@ public class PokerHandsTest {
 //        Hand h2 = new Hand("2C 2H 4H 5S AH");
 //        assertEquals(114, h2.getRankOfHand());
 //        Two Pairs: Two different pairs.
-//        Hand h3 = new Hand("2C 2H 4H 4S QH");
-//        assertEquals(212, h3.getRankOfHand());
+        Hand h3 = new Hand("2C 2H 4H 4S QH");
+        assertEquals(2432, h3.getRankOfHand());
 
 //        Three of a Kind: Three cards of the same value.
 //        Hand h4 = new Hand("2C 2H 6H 2S QH");

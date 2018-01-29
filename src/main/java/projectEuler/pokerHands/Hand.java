@@ -58,6 +58,8 @@ public class Hand {
             case 3:
                 if (isThreeOfKind()){
                     rankOfHand = 3000 + getMaxOfThreeOfKind();
+                } else {
+                    rankOfHand = 2000 + getMaxOfTwoPairs();
                 }
                 break;
             case 2:
@@ -68,6 +70,22 @@ public class Hand {
                 }
                 break;
         }
+    }
+
+    private int getMaxOfTwoPairs() {
+        int sum = 0;
+        List<Integer> pairs = new ArrayList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 2) {
+                pairs.add(key);
+            } else {
+                sum += key;
+            }
+        }
+        sum += pairs.stream().max(Comparator.naturalOrder()).get() * 100;
+        sum += pairs.stream().min(Comparator.naturalOrder()).get() * 10;
+        return sum;
     }
 
     private int getMaxOfThreeOfKind() {
