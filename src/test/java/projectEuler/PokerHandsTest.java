@@ -14,8 +14,8 @@ public class PokerHandsTest {
 //        Hand h1 = new Hand("2C 3D 4H 5S AH");
 //        assertEquals(14, h1.getRankOfHand());
 //        One Pair: Two cards of the same value.
-        Hand h2 = new Hand("2C 2H 4H 5S AH");
-        assertEquals(114, h2.getRankOfHand());
+//        Hand h2 = new Hand("2C 2H 4H 5S AH");
+//        assertEquals(114, h2.getRankOfHand());
 //        Two Pairs: Two different pairs.
 //        Hand h3 = new Hand("2C 2H 4H 4S QH");
 //        assertEquals(212, h3.getRankOfHand());
@@ -38,8 +38,8 @@ public class PokerHandsTest {
 //        Hand h9 = new Hand("8H 9H TH JH QH");
 //        assertEquals(8500, h9.getRankOfHand());
 //        Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-//        Hand h10 = new Hand("TS JS QS KS AS");
-//        assertEquals(10000, h10.getRankOfHand());
+        Hand h10 = new Hand("TS JS QS KS AS");
+        assertEquals(10000, h10.getRankOfHand());
     }
 
     @Test
