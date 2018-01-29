@@ -55,6 +55,11 @@ public class Hand {
                     rankOfHand = 4000 + getMaxOfCard().get();
                 }
                 break;
+            case 3:
+                if (isThreeOfKind()){
+                    rankOfHand = 3000 + getMaxOfThreeOfKind();
+                }
+                break;
             case 2:
                 if (isFourOfKind()) {
                     rankOfHand = 7000 + getMaxFourOfKind();
@@ -63,6 +68,32 @@ public class Hand {
                 }
                 break;
         }
+    }
+
+    private int getMaxOfThreeOfKind() {
+        int sum = 0;
+        List<Integer> notThree = new LinkedList<>();
+
+        for (Integer key : multimap.keySet()) {
+            if (multimap.get(key).size() == 3) {
+                sum += 100 * key;
+            } else if (multimap.get(key).size() == 1){
+                notThree.add(key);
+            }
+        }
+        sum += notThree.stream().max(Comparator.naturalOrder()).get() * 10;
+        sum += notThree.stream().min(Comparator.naturalOrder()).get();
+        return sum;
+    }
+
+    private boolean isThreeOfKind() {
+
+        for (Integer key : multimap.keySet()) {
+            if(multimap.get(key).size() == 3){
+                return true;
+            }
+        }
+        return false;
     }
 
     private Optional<Integer> getMaxOfCard() {

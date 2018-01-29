@@ -19,13 +19,14 @@ public class PokerHandsTest {
 //        Two Pairs: Two different pairs.
 //        Hand h3 = new Hand("2C 2H 4H 4S QH");
 //        assertEquals(212, h3.getRankOfHand());
+
 //        Three of a Kind: Three cards of the same value.
 //        Hand h4 = new Hand("2C 2H 6H 2S QH");
-//        assertEquals(312, h4.getRankOfHand());
+//        assertEquals(3326, h4.getRankOfHand());
 
 //        Straight: All cards are consecutive values.
-        Hand h5 = new Hand("2C 3H 4H 5S 6H");
-        assertEquals(4006, h5.getRankOfHand());
+//        Hand h5 = new Hand("2C 3H 4H 5S 6H");
+//        assertEquals(4006, h5.getRankOfHand());
 
 //        Flush: All cards of the same suit.
 //        Hand h6 = new Hand("3D 6D 7D TD QD");
