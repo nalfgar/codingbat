@@ -11,12 +11,12 @@ public class PokerHandsTest {
     @Test
     public void testGetValueOfHand() {
 //        High Card: Highest value card.
-//        Hand h1 = new Hand("2C 3D 4H 5S AH");
-//        assertEquals(14, h1.getRankOfHand());
+        Hand h1 = new Hand("2C 3D 4H 5S AH");
+        assertEquals(14, h1.getRankOfHand());
 
 //        One Pair: Two cards of the same value.
-        Hand h2 = new Hand("2C 2H 4H 5S AH");
-        assertEquals(2345, h2.getRankOfHand());
+//        Hand h2 = new Hand("2C 2H 4H 5S AH");
+//        assertEquals(2345, h2.getRankOfHand());
 
 //        Two Pairs: Two different pairs.
 //        Hand h3 = new Hand("2C 2H 4H 4S QH");
