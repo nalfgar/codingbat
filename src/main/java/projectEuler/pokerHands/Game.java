@@ -14,7 +14,13 @@ public class Game {
 
 
     public int whoWins() {
-        System.out.println(h1.getMultimap() + "\t" + h2.getMultimap() + "\t" + "***" + h1.getRankOfHand() + "\t" +h2.getRankOfHand());
-        return h1.getRankOfHand() > h2.getRankOfHand() ? 1 : 2;
+        if (h1.getTypeOfHand() > h2.getTypeOfHand()){
+            return 1;
+        } else {
+            if (h1.getRankOfHand() > h2.getRankOfHand()){
+                return 1;
+            }
+        }
+        return 2;
     }
 }
