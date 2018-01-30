@@ -13,6 +13,7 @@ public class Hand {
     private Map<String, Integer> orderCodeMap = new HashMap<>();
     private Multimap<Integer, String> multimap = ArrayListMultimap.create();
     private int rankOfHand = 0;
+    private int typeOfHand = 0;
 
     private void fillOrderCode() {
         orderCodeMap.put("2", 2);
@@ -47,31 +48,41 @@ public class Hand {
         switch (multimap.keySet().size()) {
             case 5:
                 if (isTheSameSuit() && isRoyalFlush()) {
+                    typeOfHand = 10;
                     rankOfHand = 10000;
                 } else if (isTheSameSuit() && isStraight()) {
-                    rankOfHand = 8000 + getMaxStraight().get();
+                    typeOfHand = 8;
+                    rankOfHand = 8000 + getMaxStraight();
                 } else if (isTheSameSuit()) {
-                    rankOfHand = 5000 + getMaxOfCard().get();
+                    typeOfHand = 5;
+                    rankOfHand = 5000 + getMaxOfCard();
                 } else if (isStraight()) {
-                    rankOfHand = 4000 + getMaxOfCard().get();
+                    typeOfHand = 4;
+                    rankOfHand = 4000 + getMaxOfCard();
                 } else {
+                    typeOfHand = 0;
                     rankOfHand = getMAxOfHighCard();
                 }
                 break;
             case 4:
+                typeOfHand = 1;
                 rankOfHand = 1000 + getMaxOfOnePair();
                 break;
             case 3:
                 if (isThreeOfKind()) {
+                    typeOfHand = 3;
                     rankOfHand = 3000 + getMaxOfThreeOfKind();
                 } else {
+                    typeOfHand = 2;
                     rankOfHand = 2000 + getMaxOfTwoPairs();
                 }
                 break;
             case 2:
                 if (isFourOfKind()) {
+                    typeOfHand = 7;
                     rankOfHand = 7000 + getMaxFourOfKind();
                 } else {
+                    typeOfHand = 6;
                     rankOfHand = 6000 + getMaxOfFoulHouse();
                 }
                 break;
@@ -132,7 +143,7 @@ public class Hand {
 
         for (Integer key : multimap.keySet()) {
             if (multimap.get(key).size() == 3) {
-                sum += 100 * key;
+                sum += key * 100;
             } else if (multimap.get(key).size() == 1) {
                 notThree.add(key);
             }
@@ -152,10 +163,11 @@ public class Hand {
         return false;
     }
 
-    private Optional<Integer> getMaxOfCard() {
+    private Integer getMaxOfCard() {
         return multimap.keySet()
                 .stream()
-                .max(Comparator.naturalOrder());
+                .max(Comparator.naturalOrder())
+                .get();
     }
 
     private int getMaxOfFoulHouse() {
@@ -192,8 +204,8 @@ public class Hand {
                 || (quantities.get(0) == 4 && quantities.get(1) == 1);
     }
 
-    private Optional<Integer> getMaxStraight() {
-        return multimap.keySet().stream().max(Comparator.naturalOrder());
+    private Integer getMaxStraight() {
+        return multimap.keySet().stream().max(Comparator.naturalOrder()).get();
     }
 
     private boolean isTheSameSuit() {
