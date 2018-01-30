@@ -5,56 +5,130 @@ import projectEuler.pokerHands.Game;
 import projectEuler.pokerHands.Hand;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 public class PokerHandsTest {
 
     @Test
-    public void testGetValueOfHand() {
+    public void testGetValueOfHandForHighCard() {
 //        High Card: Highest value card.
-//        Hand h1 = new Hand("2C 3D 4H 5S AH");
-//        assertEquals(14, h1.getRankOfHand());
+        Hand hand1 = new Hand("2C 3D 4H 5S AH");
+        Hand hand3 = new Hand("2C 3D 4H 5S KH");
 
+        assertEquals(0, hand1.getTypeOfHand());
+        assertEquals(0, hand3.getTypeOfHand());
+
+        assertTrue(hand1.getRankOfHand() > hand3.getRankOfHand());
+    }
+
+    @Test
+    public void testGetValueOfHandForOnePair() {
 //        One Pair: Two cards of the same value.
-//        Hand h2 = new Hand("5H 5C 6S 7S KD");
-//        assertEquals(2345, h2.getRankOfHand());
+        Hand hand1 = new Hand("5H 5C 6S 7S KD");
+        Hand hand2 = new Hand("2H 5C 6S KS KD");
 
+        assertEquals(1, hand1.getTypeOfHand());
+        assertEquals(1, hand2.getTypeOfHand());
+
+        assertFalse(hand1.wins(hand2));
+    }
+
+    @Test
+    public void testGetValueOfHandForTwoPairs() {
 //        Two Pairs: Two different pairs.
-//        Hand h3 = new Hand("2C 2H 4H 4S QH");
-//        assertEquals(2432, h3.getRankOfHand());
+        Hand hand1 = new Hand("2C 2H 4H 4S QH");
+        Hand hand2 = new Hand("3C 3H AH AS QH");
 
+        assertEquals(2, hand1.getTypeOfHand());
+        assertEquals(2, hand2.getTypeOfHand());
+
+        assertFalse(hand1.wins(hand2));
+    }
+
+    @Test
+    public void testGetValueOfHandForThreeOfAKind() {
 //        Three of a Kind: Three cards of the same value.
-//        Hand h4 = new Hand("2C 2H 6H 2S QH");
-//        assertEquals(3326, h4.getRankOfHand());
+        Hand hand1 = new Hand("2C 2H 2H AS KH");
+        Hand hand2 = new Hand("3C 3H 3H 4S 5H");
 
+        assertEquals(3, hand1.getTypeOfHand());
+        assertEquals(3, hand2.getTypeOfHand());
+
+        assertFalse(hand1.wins(hand2));
+
+    }
+
+    @Test
+    public void testGetValueOfHandForStraight() {
 //        Straight: All cards are consecutive values.
-//        Hand h5 = new Hand("2C 3H 4H 5S 6H");
-//        assertEquals(4006, h5.getRankOfHand());
+        Hand hand1 = new Hand("2C 3H 4H 5S 6H");
+        Hand hand2 = new Hand("2H 3C 4S 5H 6C");
+        Hand hand3 = new Hand("9H 8C 7S 6D TC");
 
+        assertEquals(4, hand1.getTypeOfHand());
+        assertEquals(4, hand2.getTypeOfHand());
+        assertEquals(4, hand3.getTypeOfHand());
+
+        assertTrue(hand3.wins(hand2));
+        assertFalse(hand1.wins(hand3));
+    }
+
+    @Test
+    public void testGetValueOfHandForFlush() {
 //        Flush: All cards of the same suit.
-//        Hand h6 = new Hand("3D 6D 7D TD QD");
-//        assertEquals(5012, h6.getRankOfHand());
-//        Hand h6a = new Hand("3D 6D 7D TD AD");
-//        assertEquals(5014, h6a.getRankOfHand());
+        Hand hand1 = new Hand("3D 6D 7D TD QD");
+        Hand hand2 = new Hand("4S 6S 7S TS QS");
 
+        assertEquals(5, hand1.getTypeOfHand());
+        assertEquals(5, hand2.getTypeOfHand());
+        assertTrue(hand2.wins(hand1));
+    }
+
+    @Test
+    public void testGetValueOfHandForFullHouse() {
 //        Full House: Three of a kind and a pair.
-//        Hand h7 = new Hand("4C 2H 4H 2S 4S");
-//        assertEquals(6042, h7.getRankOfHand());
-//        Hand h7a = new Hand("9C 9H 9S 4H 4S");
-//        assertEquals(6094, h7a.getRankOfHand());
+        Hand hand1 = new Hand("4C 2H 4H 2S 4S");
+        Hand hand2 = new Hand("5C 3H 5H 3S 5S");
 
+        assertEquals(6, hand1.getTypeOfHand());
+        assertEquals(6, hand2.getTypeOfHand());
+        assertFalse(hand1.wins(hand2));
+    }
+
+    @Test
+    public void testGetValueOfHandForFourOfKinf() {
 //        Four of a Kind: Four cards of the same value.
-//        Hand h8 = new Hand("4H 4D 4S 4C JC");
-//        assertEquals(7051, h8.getRankOfHand());
-//        Hand h8a = new Hand("TH TD TS 4C TC");
-//        assertEquals(7104, h8a.getRankOfHand());
+        Hand hand1 = new Hand("4H 4D 4S 4C JC");
+        Hand hand2 = new Hand("5H 5D 5S 5C AC");
+
+        assertEquals(7, hand1.getTypeOfHand());
+        assertEquals(7, hand2.getTypeOfHand());
+        assertFalse(hand1.wins(hand2));
+    }
+
+    @Test
+    public void testGetValueOfHandForStraightFlush() {
 
 //        Straight Flush: All cards are consecutive values of same suit.
-//        Hand h9 = new Hand("8H 9H TH JH QH");
-//        assertEquals(8500, h9.getRankOfHand());
+        Hand hand1 = new Hand("8H 9H TH JH QH");
+        Hand hand2 = new Hand("9C TC JC QC KC");
+
+        assertEquals(8, hand1.getTypeOfHand());
+        assertEquals(8, hand2.getTypeOfHand());
+        assertTrue(hand2.wins(hand1));
+    }
+
+    @Test
+    public void testGetValueOfHandForRoyalFlush() {
 
 //        Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-//        Hand h10 = new Hand("TS JS QS KS AS");
-//        assertEquals(10000, h10.getRankOfHand());
+        Hand hand1 = new Hand("TS JS QS KS AS");
+        Hand hand2 = new Hand("9C TC JC QC KC");
+
+        assertEquals(9, hand1.getTypeOfHand());
+        assertEquals(8, hand2.getTypeOfHand());
+        assertTrue(hand1.wins(hand2));
     }
 
     @Test

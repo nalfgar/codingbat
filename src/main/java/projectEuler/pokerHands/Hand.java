@@ -47,8 +47,8 @@ public class Hand {
         switch (multimap.keySet().size()) {
             case 5:
                 if (isTheSameSuit() && isRoyalFlush()) {
-                    typeOfHand = 10;
-                    rankOfHand = 10000;
+                    typeOfHand = 9;
+                    rankOfHand = 9000;
                 } else if (isTheSameSuit() && isStraight()) {
                     typeOfHand = 8;
                     rankOfHand = 8000 + getMaxStraight();
@@ -163,10 +163,19 @@ public class Hand {
     }
 
     private Integer getMaxOfCard() {
-        return multimap.keySet()
-                .stream()
-                .max(Comparator.naturalOrder())
-                .get();
+        Set<Integer> keySet = multimap.keySet();
+        List<Integer> keys = new ArrayList<>();
+        keys.addAll(keySet);
+        keys.sort(Comparator.naturalOrder());
+        int sum = 0;
+        int weight = 1;
+
+        for (Integer key : keys) {
+            sum += Math.pow(key, weight);
+            weight++;
+        }
+
+        return sum;
     }
 
     private int getMaxOfFoulHouse() {
@@ -243,5 +252,11 @@ public class Hand {
         }
 
         return true;
+    }
+
+    public boolean wins(Hand hand2) {
+        if (this.getTypeOfHand() > hand2.getTypeOfHand()){
+            return true;
+        } else return this.getRankOfHand() > hand2.getRankOfHand();
     }
 }
