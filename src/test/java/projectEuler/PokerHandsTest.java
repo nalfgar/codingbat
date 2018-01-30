@@ -11,12 +11,15 @@ public class PokerHandsTest {
     @Test
     public void testGetValueOfHand() {
 //        High Card: Highest value card.
-        Hand h1 = new Hand("2C 3D 4H 5S AH");
-        assertEquals(14, h1.getRankOfHand());
+//        Hand h1 = new Hand("2C 3D 4H 5S AH");
+//        assertEquals(14, h1.getRankOfHand());
 
 //        One Pair: Two cards of the same value.
-//        Hand h2 = new Hand("2C 2H 4H 5S AH");
+//        Hand h2 = new Hand("5H 5C 6S 7S KD");
 //        assertEquals(2345, h2.getRankOfHand());
+
+        Hand h2a = new Hand("2C 3S 8S 8D TD");
+        assertEquals(2345, h2a.getRankOfHand());
 
 //        Two Pairs: Two different pairs.
 //        Hand h3 = new Hand("2C 2H 4H 4S QH");
@@ -60,19 +63,22 @@ public class PokerHandsTest {
     @Test
     public void testGame() {
 
-        Game game1 = new Game("5H 5C 6S 7S KD", "2C 3S 8S 8D TD");
-        assertEquals(2, game1.whoWins());
+//        Game game1 = new Game("5H 5C 6S 7S KD 2C 3S 8S 8D TD");
+//        assertEquals(2, game1.whoWins());
+//
+//        Game game2 = new Game("5D 8C 9S JS AC 2C 5C 7D 8S QH");
+//        assertEquals(1, game2.whoWins());
 
-        Game game2 = new Game("5D 8C 9S JS AC", "2C 5C 7D 8S QH");
-        assertEquals(1, game2.whoWins());
-//
-        Game game3 = new Game("2D 9C AS AH AC", "3D 6D 7D TD QD");
-        assertEquals(2, game3.whoWins());
-//
-        Game game4 = new Game("4D 6S 9H QH QC", "3D 6D 7H QD QS");
-        assertEquals(1, game4.whoWins());
-//
-        Game game5 = new Game("2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
+//        Game game3 = new Game("2D 9C AS AH AC 3D 6D 7D TD QD");
+//        assertEquals(2, game3.whoWins());
+
+//        Game game4 = new Game("4D 6S 9H QH QC 3D 6D 7H QD QS");
+//        assertEquals(1, game4.whoWins());
+
+//        Game game5 = new Game("2H 2D 4C 4D 4S 3C 3D 3S 9S 9D");
+//        assertEquals(1, game5.whoWins());
+
+        Game game5 = new Game("8C TS KC 9H 4S 7D 2S 5D 3S AC");
         assertEquals(1, game5.whoWins());
     }
 }

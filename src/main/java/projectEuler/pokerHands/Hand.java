@@ -80,12 +80,12 @@ public class Hand {
 
     private int getMAxOfHighCard() {
         int sum = 0;
-        int counter = 1;
+        int counter = 0;
         Set<Integer> keysSet = multimap.keySet();
         keysSet = keysSet.stream().sorted().collect(Collectors.toSet());
         for (Integer key : keysSet) {
-            sum += key * counter;
-            counter =+ 20;
+            sum += Math.pow(key, counter);
+            counter++;
         }
         return sum;
     }
@@ -188,8 +188,8 @@ public class Hand {
         for (Integer key : multimap.keySet()) {
             quantities.add(multimap.get(key).size());
         }
-        return ((quantities.get(0) == 1 && quantities.get(1) == 4)
-                || (quantities.get(0) == 4 && quantities.get(1) == 1)) ? true : false;
+        return (quantities.get(0) == 1 && quantities.get(1) == 4)
+                || (quantities.get(0) == 4 && quantities.get(1) == 1);
     }
 
     private Optional<Integer> getMaxStraight() {
@@ -198,11 +198,9 @@ public class Hand {
 
     private boolean isTheSameSuit() {
         Set<String> suits = new HashSet<>();
-        for (String suit : multimap.values()) {
-            suits.add(suit);
-        }
+        suits.addAll(multimap.values());
 
-        return suits.size() == 1 ? true : false;
+        return suits.size() == 1;
     }
 
     private boolean isStraight() {
