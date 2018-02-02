@@ -23,6 +23,6 @@ public class CollatzSequenceTest {
         expectedList.add(2);
         expectedList.add(1);
 //        assertEquals(9, howLongIscollatzSequence(13));
-        System.out.println(longestCollatzSequence(1000000));
+        System.out.println(longestCollatzSequence(10000));
     }
 }
