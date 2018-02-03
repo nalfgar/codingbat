@@ -14,13 +14,6 @@ public class Game {
 
 
     public int whoWins() {
-        if (h1.getTypeOfHand() > h2.getTypeOfHand()){
-            return 1;
-        } else {
-            if (h1.getRankOfHand() > h2.getRankOfHand()){
-                return 1;
-            }
-        }
-        return 2;
+        return h1.wins(h2) ? 1 : 2;
     }
 }

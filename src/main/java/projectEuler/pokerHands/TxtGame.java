@@ -16,7 +16,6 @@ public class TxtGame {
             e.printStackTrace();
         }
 
-
         while (fileScanner.hasNext()) {
             line = fileScanner.nextLine();
             game = new Game(line);
