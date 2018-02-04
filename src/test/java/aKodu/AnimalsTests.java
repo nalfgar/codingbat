@@ -13,11 +13,20 @@ import static org.junit.Assert.assertEquals;
 public class AnimalsTests {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final String os = System.getProperty("os.name");
+    private final String linuxEndOfLine = "\n";
+    private final String windowsEndOfLine = "\r\n";
+    private String endOfLine;
 
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
+        if (os.equals("Linux")) {
+            endOfLine = linuxEndOfLine;
+        } else if (os.equals("Windows")){
+            endOfLine = windowsEndOfLine;
+        }
     }
 
     @After
@@ -30,21 +39,21 @@ public class AnimalsTests {
     public void dogVoice() {
         Dog dog = new Dog();
         dog.giveVoice();
-        assertEquals("Hauuu!\r\n", outContent.toString());
+        assertEquals("Hauuu!" + endOfLine, outContent.toString());
     }
 
     @Test
     public void catVoice() {
         Cat cat = new Cat();
         cat.giveVoice();
-        assertEquals("Miauuu!\r\n", outContent.toString());
+        assertEquals("Miauuu!" + endOfLine, outContent.toString());
     }
 
     @Test
     public void mouseVoice() {
         Mouse mouse = new Mouse();
         mouse.giveVoice();
-        assertEquals("Pi\r\n", outContent.toString());
+        assertEquals("Pi" + endOfLine, outContent.toString());
     }
 
 }
