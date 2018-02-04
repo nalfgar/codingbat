@@ -1,4 +1,4 @@
-package aKodu;
+package aKodu.firstInterface;
 
 public class Cat implements Voice{
     @Override

@@ -1,8 +1,10 @@
-package aKodu;
+package aKodu.firstInterface;
 
+import aKodu.firstInterface.Cat;
+import aKodu.firstInterface.Dog;
+import aKodu.firstInterface.Mouse;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;

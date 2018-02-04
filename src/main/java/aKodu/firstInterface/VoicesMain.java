@@ -1,4 +1,4 @@
-package aKodu;
+package aKodu.firstInterface;
 
 import java.util.ArrayList;
 import java.util.List;
