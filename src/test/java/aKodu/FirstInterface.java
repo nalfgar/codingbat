@@ -1,4 +1,4 @@
-package aKodu.firstInterface;
+package aKodu;
 
 import aKodu.firstInterface.Cat;
 import aKodu.firstInterface.Dog;
@@ -12,7 +12,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class AnimalsTests {
+public class FirstInterface {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final String os = System.getProperty("os.name");
