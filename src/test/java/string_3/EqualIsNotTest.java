@@ -2,20 +2,19 @@ package string_3;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static string_3.EqualIsNot.equalIsNot;
 
 public class EqualIsNotTest {
 
     @Test
     public void testOne(){
-        assertFalse(equalIsNot("This is not"));
+        assertThat(equalIsNot("This is not")).isEqualTo(false);
     }
 
     @Test
     public void testTwo(){
-        assertTrue(equalIsNot("This is notnot"));
+        assertThat(equalIsNot("This is notnot")).isEqualTo(true);
     }
 
 
