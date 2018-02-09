@@ -2,23 +2,23 @@ package string_3;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static string_3.CountYZ.countYZ;
 
 public class CountYZTest {
 
     @Test
     public void testOne(){
-        assertEquals(2, countYZ("fez day"));
+        assertThat(countYZ("fez day")).isEqualTo(2);
     }
 
     @Test
     public void testTwo(){
-        assertEquals(2, countYZ("day fez"));
+        assertThat(countYZ("day fez")).isEqualTo(2);
     }
 
     @Test
     public void testThre(){
-        assertEquals(2, countYZ("day fyyyz"));
+        assertThat(countYZ("day fyyyz")).isEqualTo(2);
     }
 }

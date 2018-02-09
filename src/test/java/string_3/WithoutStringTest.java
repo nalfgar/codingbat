@@ -2,35 +2,32 @@ package string_3;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static string_3.WithoutString.withoutString;
 
 public class WithoutStringTest {
 
     @Test
     public void testOne(){
-        assertEquals( "He there", WithoutString.withoutString("Hello there", "llo"));
+        assertThat(withoutString("Hello there", "llo")).isEqualTo("He there");
     }
 
     @Test
     public void testTwo(){
-        assertEquals( "Hllo thr", WithoutString.withoutString("Hello there", "e"));
+        assertThat(withoutString("Hello there", "e")).isEqualTo("Hllo thr");
     }
 
     @Test
     public void testThree(){
-        assertEquals( "Hello there", WithoutString.withoutString("Hello there", "x"));
+        assertThat(withoutString("Hello there", "x")).isEqualTo("Hello there");
     }
 
     @Test
     public void testFour(){
-        assertEquals( "x", WithoutString.withoutString("xxx", "xx"));
+        assertThat(withoutString("xxx", "xx")).isEqualTo("x");
     }
     @Test
     public void testFfive(){
-        assertEquals( "xzz", WithoutString.withoutString("xyzzy", "Y"));
+        assertThat(withoutString("xyzzy", "Y")).isEqualTo("xzz");
     }
-
-
-
-
 }
