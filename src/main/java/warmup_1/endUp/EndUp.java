@@ -9,8 +9,8 @@ public class EndUp {
         if (rest <= 0){
             return  str.toUpperCase();
         }else {
-            begin = str.substring(0, str.length() - rest);
-            end = str.substring(str.length()-rest, str.length());
+            begin = str.substring(0, rest);
+            end = str.substring(rest, str.length());
             return begin + end.toUpperCase();
         }
     }

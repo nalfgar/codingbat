@@ -8,7 +8,7 @@ import static warmup_1.endUp.EndUp.endUp;
 public class EndUpTest {
 
     @Test
-    public void testOne(){
+    public void testOne() {
         assertThat(endUp("a")).isEqualTo("A");
         assertThat(endUp("ab")).isEqualTo("AB");
         assertThat(endUp("abc")).isEqualTo("ABC");
@@ -19,5 +19,10 @@ public class EndUpTest {
         assertThat(endUp("abcd")).isEqualTo("abcD");
         assertThat(endUp("abcde")).isEqualTo("abcDE");
         assertThat(endUp("abcdef")).isEqualTo("abcDEF");
+    }
+
+    @Test
+    public void testThree() {
+        assertThat(endUp("hello")).isEqualTo("heLLO");
     }
 }
