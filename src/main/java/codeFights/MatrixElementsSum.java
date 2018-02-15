@@ -16,7 +16,6 @@ public class MatrixElementsSum {
                 }
             }
         }
-        printMatrix(newMatrix);
 
         return sumMatrix(newMatrix);
     }
@@ -30,14 +29,5 @@ public class MatrixElementsSum {
             }
         }
         return sum;
-    }
-
-    protected static void printMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j : matrix[i]) {
-                System.out.print(j + " ");
-            }
-            System.out.println();
-        }
     }
 }
