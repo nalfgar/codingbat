@@ -29,19 +29,12 @@ public class ReverseParenthesesTest {
 
     @Test
     public void testFive() {
-        assertThat(reverseParentheses("abc(cba)ab(bac)c")).isEqualTo("abc(cba)ab(bac)c");
+        assertThat(reverseParentheses("(ba)(dc)")).isEqualTo("abcd");
     }
 
-
-
-//    @Test
-//    public void testFive() {
-//        assertThat(reverseParentheses("The ((quick (brown) (fox) jumps over the lazy) dog)")).isEqualTo("The god quick nworb xof jumps over the lazy");
-//    }
-
-
-
-
-
+    @Test
+    public void testSix() {
+        assertThat(reverseParentheses("The ((quick (brown) (fox) jumps over the lazy) dog)")).isEqualTo("The god quick nworb xof jumps over the lazy");
+    }
 
 }
