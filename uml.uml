@@ -3,27 +3,29 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="271.0">codeFights.ReverseParenthesesTest</node>
+    <node x="0.0" y="294.0">codeFights.ReverseParenthesesTest</node>
+    <node x="232.0" y="294.0">codeFights.AdjacentElementsProductTest</node>
     <node x="0.0" y="0.0">codeFights.ReverseParentheses</node>
-    <node x="45.0" y="126.0">codeFights.ReverseParentheses.InnerIndexes</node>
+    <node x="202.0" y="507.0">codeFights.AddBorderTest</node>
+    <node x="0.0" y="507.0">codeFights.IsLuckyTest</node>
+    <node x="67.5" y="149.0">codeFights.ReverseParentheses.BeginEndIndexes</node>
+    <node x="394.0" y="507.0">codeFights.AlternatingSumsTest</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="codeFights.ReverseParentheses.InnerIndexes" target="codeFights.ReverseParentheses">
+    <edge source="codeFights.ReverseParentheses.BeginEndIndexes" target="codeFights.ReverseParentheses">
       <point x="0.0" y="-50.0" />
-      <point x="0.0" y="38.0" />
+      <point x="0.0" y="49.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.7000000000000002" x="88.0" y="103.0" />
-  <SelectedNodes>
-    <node>codeFights.ReverseParenthesesTest</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="1.0" x="219.5" y="231.0" />
+  <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
-    <Category>Constructors</Category>
-    <Category>Methods</Category>
-    <Category>Properties</Category>
     <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
