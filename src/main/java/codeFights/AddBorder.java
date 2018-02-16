@@ -3,7 +3,7 @@ package codeFights;
 public class AddBorder {
     public static String[] addBorder(String[] picture) {
         String[] result = new String[picture.length + 2];
-        int lineLenght = picture[0].length();
+        int lineLenght = picture[0].length() + 2;
         String emptyLine = makeEmptyLine(lineLenght);
 
         result[0] = emptyLine;
@@ -22,7 +22,7 @@ public class AddBorder {
     private static String makeEmptyLine(int lineLenght) {
         StringBuilder result = new StringBuilder("");
 
-        for (int i = 0; i < lineLenght + 2; i++) {
+        for (int i = 0; i < lineLenght; i++) {
             result.append("*");
         }
 
