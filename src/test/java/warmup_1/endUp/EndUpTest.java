@@ -2,7 +2,7 @@ package warmup_1.endUp;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static warmup_1.endUp.EndUp.endUp;
 
 public class EndUpTest {

@@ -1,6 +1,5 @@
 package codeFights.exploringTheWaters;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +11,7 @@ public class AddBorderTest {
         String[] givenPicture = new String[]{"abc", "ded"};
         String[] expectedPicture = new String[]{"*****","*abc*", "*ded*","*****"};
 
-        Assertions.assertThat(AddBorder.addBorder(givenPicture)).isEqualTo(expectedPicture);
+        assertThat(AddBorder.addBorder(givenPicture)).isEqualTo(expectedPicture);
     }
 
     @Test
