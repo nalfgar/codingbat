@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static map_1.mapAB.MapAB.mapAB;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MapABTest {
 

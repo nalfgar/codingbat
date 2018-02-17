@@ -3,7 +3,7 @@ package codeFights.exploringTheWaters;
 import org.junit.Test;
 
 import static codeFights.exploringTheWaters.PalindromeRearranging.palindromeRearranging;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PalindromeRearrangingTest {
 

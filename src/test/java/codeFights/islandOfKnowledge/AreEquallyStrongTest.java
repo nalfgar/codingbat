@@ -3,7 +3,7 @@ package codeFights.islandOfKnowledge;
 import org.junit.Test;
 
 import static codeFights.islandOfKnowledge.AreEquallyStrong.areEquallyStrong;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AreEquallyStrongTest {
 

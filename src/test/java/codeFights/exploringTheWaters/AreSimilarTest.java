@@ -1,9 +1,9 @@
 package codeFights.exploringTheWaters;
 
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class AreSimilarTest {
 
@@ -12,7 +12,7 @@ public class AreSimilarTest {
         int[] a = new int[]{1,2,3};
         int[] b = new int[]{1,2,3};
 
-        AssertionsForClassTypes.assertThat(AreSimilar.areSimilar(a, b)).isTrue();
+        assertThat(AreSimilar.areSimilar(a, b)).isTrue();
     }
 
     @Test
