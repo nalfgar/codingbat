@@ -30,6 +30,6 @@ public class CommonCharacterCount {
 
     private static void fillMap(String s2, Map<String, Integer> map) {
         String letter1;
-        FirstNotRepeatingCharacter.stringToMap(s2, map);
+        FirstNotRepeatingCharacter.stringToMapOfFrequencyLerrters(s2, map);
     }
 }

@@ -6,9 +6,8 @@ import java.util.Map;
 public class FirstNotRepeatingCharacter {
     public static char firstNotRepeatingCharacter(String s) {
         Map<String, Integer> map = new LinkedHashMap<>();
-        String letter;
 
-        stringToMap(s, map);
+        stringToMapOfFrequencyLerrters(s, map);
 
         for (Map.Entry<String, Integer> stringIntegerEntry : map.entrySet()) {
             if (stringIntegerEntry.getValue() == 1) {
@@ -19,7 +18,7 @@ public class FirstNotRepeatingCharacter {
 
     }
 
-    public static void stringToMap(String s, Map<String, Integer> map) {
+    public static void stringToMapOfFrequencyLerrters(String s, Map<String, Integer> map) {
         String letter;
         for (int i = 0; i < s.length(); i++) {
             letter = String.valueOf(s.charAt(i));
