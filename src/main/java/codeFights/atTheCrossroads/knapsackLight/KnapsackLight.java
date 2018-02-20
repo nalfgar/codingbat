@@ -26,8 +26,6 @@ public class KnapsackLight {
                 return map.get(strongerHand);
             } else if(map.get(weakestHand) >= map.get(strongerHand)){
                 return map.get(weakestHand);
-            } else {
-                map.get(weakestHand);
             }
         }
         return 0;
