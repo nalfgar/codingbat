@@ -1,5 +1,7 @@
 package codeFights.smoothSailing;
 
+import codeFights.Arrays.FirstNotRepeatingCharacter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,13 +30,6 @@ public class CommonCharacterCount {
 
     private static void fillMap(String s2, Map<String, Integer> map) {
         String letter1;
-        for (int i = 0; i < s2.length(); i++) {
-            letter1 = String.valueOf(s2.charAt(i));
-            if (!map.containsKey(letter1)){
-                map.put(letter1, 1);
-            } else {
-                map.put(letter1, map.get(letter1)+1);
-            }
-        }
+        FirstNotRepeatingCharacter.stringToMap(s2, map);
     }
 }
