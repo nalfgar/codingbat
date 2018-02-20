@@ -2,7 +2,7 @@ package string_3;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 import static string_3.EqualIsNot.equalIsNot;
 
 public class EqualIsNotTest {

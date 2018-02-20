@@ -2,7 +2,7 @@ package string_3;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static string_3.CountYZ.countYZ;
 
 public class CountYZTest {
