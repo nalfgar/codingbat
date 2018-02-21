@@ -8,20 +8,16 @@ public class StringsRearrangementTest {
 
     @Test
     public void testOne() {
-        String[] inputArray = new String[]{"aba","bbb", "bab"};
-        assertThat(StringsRearrangementX.stringsRearrangementX(inputArray)).isFalse();
+        String[] inputArray0 = new String[]{"aa","ab","ba","ab"};
+        assertThat(StringsRearrangementX.stringsRearrangement(inputArray0)).isTrue();
     }
 
+//    @Test
+//    public void tesTwo() {
+//        String[] inputArray0 = new String[]{"ab",
+//                "bb",
+//                "aa"};
+//        assertThat(StringsRearrangement.stringsRearrangement(inputArray0)).isTrue();
+//    }
 
-//    @Test
-//    public void testTwo() {
-//        String[] inputArray = new String[]{"aaa","aaa", "aaa"};
-//        assertThat(stringsRearrangement(inputArray)).isFalse();
-//    }
-//
-//    @Test
-//    public void testThree() {
-//        String[] inputArray = new String[]{"aba", "bbb", "bab"};
-//        assertThat(stringsRearrangement(inputArray)).isFalse();
-//    }
 }
