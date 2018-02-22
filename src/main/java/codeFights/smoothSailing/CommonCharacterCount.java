@@ -1,6 +1,6 @@
 package codeFights.smoothSailing;
 
-import codeFights.interviewPractice.arrays.FirstNotRepeatingCharacter;
+import codeFights.interviewPractice.FirstNotRepeatingCharacter;
 
 import java.util.HashMap;
 import java.util.Map;

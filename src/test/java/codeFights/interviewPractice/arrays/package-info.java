@@ -1,1 +1,0 @@
-package codeFights.interviewPractice.arrays;
