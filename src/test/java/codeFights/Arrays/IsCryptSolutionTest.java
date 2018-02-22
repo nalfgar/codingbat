@@ -22,4 +22,36 @@ public class IsCryptSolutionTest {
 
         assertThat(isCryptSolution(crypt, solution)).isFalse();
     }
+
+    @Test
+    public void testThree() {
+        String[] crypt = new String[]{"TEN", "TWO", "ONE"};
+        char[][] solution = new char[][]{{'O', '2'}, {'T', '4'}, {'W', '6'}, {'E', '6'}, {'N', '3'}};
+
+        assertThat(isCryptSolution(crypt, solution)).isFalse();
+    }
+
+    @Test
+    public void testFour() {
+        String[] crypt = new String[]{"TEN", "ONE", "TWO"};
+        char[][] solution = new char[][]{{'O', '0'}, {'T', '1'}, {'W', '2'}, {'E', '5'}, {'N', '6'}};
+
+        assertThat(isCryptSolution(crypt, solution)).isFalse();
+    }
+
+    @Test
+    public void testFive() {
+        String[] crypt = new String[]{"A", "A", "A"};
+        char[][] solution = new char[][]{{'A', '0'}};
+
+        assertThat(isCryptSolution(crypt, solution)).isTrue();
+    }
+
+    @Test
+    public void testSix() {
+        String[] crypt = new String[]{"AAAAAAAAAAAA", "BBBBBBBBBBBB", "CCCCCCCCCCCC"};
+        char[][] solution = new char[][]{{'A', '1'},{'B','2'},{'C','3'}};
+
+        assertThat(isCryptSolution(crypt, solution)).isTrue();
+    }
 }
