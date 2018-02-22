@@ -6,9 +6,9 @@ public class RremoveKFromListTest {
 
     @Test
     public void testOne() {
-        ListNode<Integer> givenListNode = new ListNode<>(1);
-        System.out.println(givenListNode.value);
-        System.out.println(givenListNode.next);
+//        ListNode<Integer> givenListNode = new ListNode<>(1);
+//        System.out.println(givenListNode.value);
+//        System.out.println(givenListNode.next);
 //        assertThat();
     }
 }
