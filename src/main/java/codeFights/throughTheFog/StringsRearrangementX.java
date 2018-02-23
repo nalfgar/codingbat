@@ -1,7 +1,5 @@
 package codeFights.throughTheFog;
 
-import java.util.Arrays;
-
 public class StringsRearrangementX {
     static boolean stringsRearrangement(String[] inputArray) {
         for (String startingStr : inputArray)
@@ -13,7 +11,6 @@ public class StringsRearrangementX {
     static boolean canRearrange(String start, String[] remaining) {
         if (remaining.length == 0)
             return true;
-        System.out.println("Checking if " + start + " can lead to one of " + Arrays.toString(remaining));
         for (String next : remaining)
             if (diffs(start, next) == 1)
                 if (canRearrange(next, without(next, remaining)))
